@@ -8,9 +8,10 @@
 #include <vector>
 
 //valgrind
+enum class Keys{ UP, DOWN, RIGHT, LEFT };
 
 
-class MoveableSquare {
+class MoveableSquare{
 private:
     int coord; //coordinate of the square for the graph
     glm::vec3 vertices[4] = {
@@ -19,15 +20,21 @@ private:
        glm::vec3(-0.1f, -0.1f, 0.0f),  // bottom left // 2
        glm::vec3(-0.1f,  0.1f, 0.0f)   // top left  // 3
     };
+    Keys direction;
 public: 
     unsigned int VAO, VBO, EBO;
 
     MoveableSquare();
+
     int getCoord();
+    glm::vec3* getVertices();
+
+    void setDirection(Keys);
+    void setVerticles(glm::vec3, int);
 
     void loadSquare();
     void drawSquare();
-    void move(int);
+    void update();
 
     void deleteVertexetBuff();
 };

@@ -12,8 +12,17 @@ int MoveableSquare::getCoord()
     return this->coord;
 }
 
+glm::vec3* MoveableSquare::getVertices(){
+	return this->vertices;
+}
+
+void MoveableSquare::setVerticles(glm::vec3 vec, int indice){
+	this->vertices[indice] = vec;
+}
+
 void MoveableSquare::loadSquare()
 {
+	direction = Keys::UP;
 	unsigned int indices[] = {  
         0, 1, 3,   // first triangle
         1, 2, 3    // second triangle
@@ -27,7 +36,7 @@ void MoveableSquare::loadSquare()
  
     // bind vertex buffer object
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STREAM_DRAW);
  
     // bind element buffer objects
     // EBO is stored in the VAO
@@ -57,8 +66,30 @@ void MoveableSquare::deleteVertexetBuff(){
 	glDeleteBuffers(1, &EBO);
 }
 
-void MoveableSquare::move(int destination)
+void MoveableSquare::setDirection(Keys K)
 {
-	this->coord = destination;
-	// all the moving functions will be implemented here
+	direction = K;
+}
+
+void MoveableSquare::update(){
+	drawSquare();
+	glm::mat4 trans = glm:: mat4(1.0f);
+	if(direction == Keys::UP)
+		trans = glm::translate(trans, glm::vec3(0.0f, 0.0001f, 0.0f));
+	else if (direction == Keys::LEFT)
+		trans = glm::translate(trans, glm::vec3(-0.0001f, 0.0f, 0.0f));
+	else if (direction == Keys::DOWN)
+		trans = glm::translate(trans, glm::vec3(0.0f, -0.0001f, 0.0f));
+	else if (direction == Keys::RIGHT)
+		trans = glm::translate(trans, glm::vec3(0.0001f, 0.0f, 0.0f));
+	
+	for(int i=0; i < 4; i ++){
+		glm::vec4 tmp = trans * glm::vec4(vertices[i],1);
+		vertices[i].x = tmp.x;
+		vertices[i].y = tmp.y;
+		vertices[i].z = tmp.z;
+	}
+
+	glBindBuffer(GL_ARRAY_BUFFER, VAO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STREAM_DRAW); 
 }

@@ -21,6 +21,8 @@ const char* fragmentShaderSource = "#version 330 core\n"
 
 
 
+
+
 int main()
 {
 	// Initialize GLFW
@@ -81,9 +83,7 @@ int main()
 	glDeleteShader(fragmentShader);
 
 	MoveableSquare square = MoveableSquare();
-
 	
-
 	// Main while loop
 	while (!glfwWindowShouldClose(window))
 	{
@@ -94,7 +94,23 @@ int main()
 		// Tell OpenGL which Shader Program we want to use
 		glUseProgram(shaderProgram);
 
-		square.drawSquare();
+		square.update();
+
+		int keyW = glfwGetKey(window, GLFW_KEY_W);
+		int keyA = glfwGetKey(window, GLFW_KEY_A); 
+		int keyS = glfwGetKey(window, GLFW_KEY_S);
+		int keyD = glfwGetKey(window, GLFW_KEY_D);
+
+		if(keyW)
+			square.setDirection(Keys::UP);
+		else if(keyA)
+			square.setDirection(Keys::LEFT);
+		else if(keyS)
+			square.setDirection(Keys::DOWN);
+		else if(keyD)
+			square.setDirection(Keys::RIGHT);	
+		
+			
 
 		// Swap the back buffer with the front buffer
 		glfwSwapBuffers(window);
