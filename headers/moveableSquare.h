@@ -1,40 +1,40 @@
-#include <iostream>
+#include <stdio.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <math.h>
-#include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include <vector>
+
 
 //valgrind
 enum class Keys{ UP, DOWN, RIGHT, LEFT };
+enum class Color {RED, BLUE, PURPLE, ORANGE, YELLOW};
 
 
 class MoveableSquare{
 private:
     int coord; //coordinate of the square for the graph
-    glm::vec3 vertices[4] = {
-       glm::vec3(0.1f,  0.1f, 0.0f),  // top right // 0
-       glm::vec3(0.1f, -0.1f, 0.0f),  // bottom right // 1
-       glm::vec3(-0.1f, -0.1f, 0.0f),  // bottom left // 2
-       glm::vec3(-0.1f,  0.1f, 0.0f)   // top left  // 3
-    };
     Keys direction;
+    Color color;
+    int centre[2];
+    glm::vec3 vertices[4];
 public: 
     unsigned int VAO, VBO, EBO;
 
-    MoveableSquare();
+    MoveableSquare(float , float, float, float, float, float, float, float);
 
-    int getCoord();
-    glm::vec3* getVertices();
+    const int getCoord();
+    const glm::vec3* getVertices();
+    const int* getCentre();
+    const Keys getDirection();
+    const Color getColor();
 
+    void setCentre(); //for now it updates the center to coordiantes of the square.
     void setDirection(Keys);
-    void setVerticles(glm::vec3, int);
+    void setColor(Color);
+    void setVertices(int,double,double,double);
 
     void loadSquare();
     void drawSquare();
-    void update();
 
     void deleteVertexetBuff();
 };

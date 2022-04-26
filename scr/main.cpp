@@ -1,8 +1,15 @@
-#include<iostream>
-#include<math.h>
+#include <iostream>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <math.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <vector>
+#include <iostream>
+#include <math.h>
 
-
-#include "../headers/moveableSquare.h"
+#include "../headers/Carte.h"
 
 // Vertex Shader source code
 const char* vertexShaderSource = "#version 330 core\n"
@@ -20,9 +27,6 @@ const char* fragmentShaderSource = "#version 330 core\n"
 "}\n\0";
 
 
-
-
-
 int main()
 {
 	// Initialize GLFW
@@ -37,7 +41,7 @@ int main()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	// Create a GLFWwindow object of 800 by 800 pixels, naming it "YoutubeOpenGL"
-	GLFWwindow* window = glfwCreateWindow(800, 800, "YoutubeOpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(1000, 1000, "YoutubeOpenGL", NULL, NULL);
 	// Error check if the window fails to create
 	if (window == NULL)
 	{
@@ -52,7 +56,7 @@ int main()
 	gladLoadGL();
 	// Specify the viewport of OpenGL in the Window
 	// In this case the viewport goes from x = 0, y = 0, to x = 800, y = 800
-	glViewport(0, 0, 800, 800);
+	glViewport(0, 0, 1000, 1000);
 
 
 
@@ -82,7 +86,8 @@ int main()
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
-	MoveableSquare square = MoveableSquare();
+	//Player square = Player(0.05f,  0.05f, 0.05f, -0.05f, -0.05f, -0.05f,-0.05f,  0.05f);
+	Carte deneme = Carte();
 	
 	// Main while loop
 	while (!glfwWindowShouldClose(window))
@@ -94,7 +99,7 @@ int main()
 		// Tell OpenGL which Shader Program we want to use
 		glUseProgram(shaderProgram);
 
-		square.update();
+		/*square.update();
 
 		int keyW = glfwGetKey(window, GLFW_KEY_W);
 		int keyA = glfwGetKey(window, GLFW_KEY_A); 
@@ -108,7 +113,7 @@ int main()
 		else if(keyS)
 			square.setDirection(Keys::DOWN);
 		else if(keyD)
-			square.setDirection(Keys::RIGHT);	
+			square.setDirection(Keys::RIGHT);*/
 		
 			
 
@@ -119,7 +124,8 @@ int main()
 	}
 
 
-	square.deleteVertexetBuff();
+	//square.deleteVertexetBuff();
+	deneme.deleteCarte();
 	// Delete all the objects we've created
 	glDeleteProgram(shaderProgram);
 	// Delete window before ending the program

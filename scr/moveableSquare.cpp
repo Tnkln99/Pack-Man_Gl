@@ -1,23 +1,48 @@
-#include <stdio.h>
 #include "../headers/moveableSquare.h"
 
-MoveableSquare::MoveableSquare() 
+MoveableSquare::MoveableSquare(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4) 
 {
-    // Create reference containers for the Vartex Array Object and the Vertex Buffer Object
+    vertices[0] = glm::vec3(x1,  y1, 0.0f); // top right // 0
+    vertices[1] = glm::vec3(x2, y2, 0.0f);  // bottom right // 1
+    vertices[2] = glm::vec3(x3, y3, 0.0f);  // bottom left // 2
+    vertices[3] =  glm::vec3(x4,  y4, 0.0f);  // top left  // 3 
 	this->loadSquare();
 }
 
-int MoveableSquare::getCoord()
+const int MoveableSquare::getCoord()
 {
     return this->coord;
 }
 
-glm::vec3* MoveableSquare::getVertices(){
+const glm::vec3* MoveableSquare::getVertices(){
 	return this->vertices;
 }
 
-void MoveableSquare::setVerticles(glm::vec3 vec, int indice){
-	this->vertices[indice] = vec;
+void MoveableSquare::setCentre(){
+    centre[0] = (getVertices()[0].x + getVertices()[3].y) / 2;
+    centre[1] = (getVertices()[0].x + getVertices()[1].y) / 2;
+}
+
+const Keys MoveableSquare::getDirection(){
+	return this->direction;
+}
+
+const Color MoveableSquare::getColor(){
+	return this->color;
+}
+
+void MoveableSquare::setDirection(Keys K){
+	direction = K;
+}
+
+void MoveableSquare::setColor(Color C){
+	color = C;
+}
+
+void MoveableSquare::setVertices(int i,double x,double y, double z){
+	vertices[i].x = x;
+	vertices[i].y = y;
+	vertices[i].z = z;
 }
 
 void MoveableSquare::loadSquare()
@@ -66,30 +91,3 @@ void MoveableSquare::deleteVertexetBuff(){
 	glDeleteBuffers(1, &EBO);
 }
 
-void MoveableSquare::setDirection(Keys K)
-{
-	direction = K;
-}
-
-void MoveableSquare::update(){
-	drawSquare();
-	glm::mat4 trans = glm:: mat4(1.0f);
-	if(direction == Keys::UP)
-		trans = glm::translate(trans, glm::vec3(0.0f, 0.0001f, 0.0f));
-	else if (direction == Keys::LEFT)
-		trans = glm::translate(trans, glm::vec3(-0.0001f, 0.0f, 0.0f));
-	else if (direction == Keys::DOWN)
-		trans = glm::translate(trans, glm::vec3(0.0f, -0.0001f, 0.0f));
-	else if (direction == Keys::RIGHT)
-		trans = glm::translate(trans, glm::vec3(0.0001f, 0.0f, 0.0f));
-	
-	for(int i=0; i < 4; i ++){
-		glm::vec4 tmp = trans * glm::vec4(vertices[i],1);
-		vertices[i].x = tmp.x;
-		vertices[i].y = tmp.y;
-		vertices[i].z = tmp.z;
-	}
-
-	glBindBuffer(GL_ARRAY_BUFFER, VAO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STREAM_DRAW); 
-}
