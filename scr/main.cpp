@@ -41,7 +41,7 @@ int main()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	// Create a GLFWwindow object of 800 by 800 pixels, naming it "YoutubeOpenGL"
-	GLFWwindow* window = glfwCreateWindow(1000, 1000, "YoutubeOpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(1000, 1000, "Window", NULL, NULL);
 	// Error check if the window fails to create
 	if (window == NULL)
 	{
@@ -86,7 +86,7 @@ int main()
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
-	//Player square = Player(0.05f,  0.05f, 0.05f, -0.05f, -0.05f, -0.05f,-0.05f,  0.05f);
+	//Player square = Player(0.0f, 0.0f);
 	Carte deneme = Carte();
 	
 	// Main while loop
@@ -99,21 +99,24 @@ int main()
 		// Tell OpenGL which Shader Program we want to use
 		glUseProgram(shaderProgram);
 
-		/*square.update();
-
 		int keyW = glfwGetKey(window, GLFW_KEY_W);
 		int keyA = glfwGetKey(window, GLFW_KEY_A); 
 		int keyS = glfwGetKey(window, GLFW_KEY_S);
 		int keyD = glfwGetKey(window, GLFW_KEY_D);
 
+		/*Keys lastPressed = deneme.getLastPressedKey();
+
+		deneme.update(lastPressed);*/
+		deneme.update();
+
 		if(keyW)
-			square.setDirection(Keys::UP);
+			deneme.setPlayerDirection(Keys::UP);
 		else if(keyA)
-			square.setDirection(Keys::LEFT);
+			deneme.setPlayerDirection(Keys::LEFT);
 		else if(keyS)
-			square.setDirection(Keys::DOWN);
+			deneme.setPlayerDirection(Keys::DOWN);
 		else if(keyD)
-			square.setDirection(Keys::RIGHT);*/
+			deneme.setPlayerDirection(Keys::RIGHT);
 		
 			
 

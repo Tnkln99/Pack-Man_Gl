@@ -1,7 +1,16 @@
 #include "../headers/Player.h"
 
-Player::Player(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4) : MoveableSquare(x1,y1,x2,y2,x3,y3,x4,y4){
-    MoveableSquare::setColor(Color::BLUE);
+Player::Player(float centerx, float centery) : Square(centerx, centery, 0.05f){
+	direction = Keys::UP;
+    Square::setColor(Color::BLUE);
+}
+
+const Keys Player::getDirection(){
+	return this->direction;
+}
+
+void Player::setDirection(Keys K){
+	direction = K;
 }
 
 void Player::update(){
@@ -27,15 +36,10 @@ void Player::update(){
 
     for(int i = 0; i < 4; i ++){
         vertTmp[i] = getVertices()[i];
+		//std::cout<<vertTmp[i].x<<" "<<vertTmp[i].y<<std::endl;
     }
 	
-	setCentre();
-
-	/*for(int i=0; i < 2; i++){
-		std::cout<<"centre x : "<<getCentre()[0]<<"centre y : "<<getCentre()[1]<<std::endl;
-	}*/
-
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertTmp), vertTmp, GL_STREAM_DRAW); 
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertTmp), vertTmp, GL_DYNAMIC_DRAW); 
 
     //delete vertTmp;
 }

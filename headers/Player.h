@@ -1,11 +1,17 @@
 #include <stdio.h>
 #include <iostream>
-#include "moveableSquare.h"
+#include "Square.h"
 
-class Player : public MoveableSquare{
+class Player : public Square{
 private:
     int health = 4;
+    Keys direction;
 public:
-    Player(float , float, float, float, float, float, float, float);
+    Player(float,float);
+
+    const Keys getDirection();
+
+    void setDirection(Keys);
+    
     void update();
 };
