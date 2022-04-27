@@ -14,4 +14,5 @@ public:
     void setDirection(Keys);
     
     void update();
+    void updateCenter();
 };

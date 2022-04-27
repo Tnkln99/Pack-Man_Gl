@@ -5,6 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "enumerations.h"
+#include <utility>
 
 
 //valgrind
@@ -14,8 +15,9 @@ class Square{
 private:
     int coord; //coordinate of the square for the graph
     Color color;
-    int centre[2];
+protected:
     glm::vec3 vertices[4];
+    std::pair<float,float> center; //position as x and y
 public: 
     unsigned int VAO, VBO, EBO;
 
@@ -23,9 +25,8 @@ public:
 
     const int getCoord();
     const glm::vec3* getVertices();
-    const int* getCentre();
-    
     const Color getColor();
+    const std::pair<float,float> getCenter();
 
     void setColor(Color);
     void setVertices(int,double,double,double);

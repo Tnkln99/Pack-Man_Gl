@@ -37,7 +37,7 @@ void Carte::loadMap(){
 
     for(int i = 0; i < 40 ; i++){ //nombre de ligne de map
         for (int j =0; j < 41; j++){ // nombre de cologne de map
-            std::cout<<tmpGraph[i * 40 + j];
+            std::cout<<tmpGraph[i * 40 + j]; // printing it to be sure that it is correct
             // initialisation de notre graph.
             if(tmpGraph[i * 40 + j] == ' '){
                 GrapMap.insert(std::pair<int,std::vector<int>>(i,{}));
@@ -56,7 +56,7 @@ void Carte::loadMap(){
                 walls.push_back(Wall(x_y.first,x_y.second));
             }
         }
-        std::cout<<std::endl;
+        std::cout<<std::endl; // printing it to be sure that it is correct
     }
 
     drawMap();
@@ -69,18 +69,13 @@ const std::pair<float,float> Carte::indiceToCoordinate(int indice){
     int i = int(indice / 40);
     int j = indice % 41;
     //burasi yanlis..
-    if(j == 0)
-        result.first = -0.05f + ((j+1) * 0.05f);
-    else 
-        result.first = -0.05f + ((j+1) * 0.1f);
-    if (i == 0)
-        result.second = -0.05f + ((i+1) * 0.05f);
-    else 
-        result.second = 0.05f - ((i+1) * 0.1f);
+    result.second = -0.5f + ((j+1) * 0.05f) + 0.025f;
+    result.first = 0.5f - ((i+1) * 0.05f) + 0.025f;
     return result;
 }
 
 void Carte::drawMap(){
+    player.drawSquare();
     for(int i = 0; i < walls.size(); i++){
         walls[i].drawSquare();
     }

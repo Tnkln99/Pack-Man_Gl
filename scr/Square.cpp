@@ -22,6 +22,10 @@ const Color Square::getColor(){
 	return this->color;
 }
 
+const std::pair<float,float> Square::getCenter(){
+    return this->center;;
+}
+
 void Square::setColor(Color C){
 	color = C;
 }
