@@ -1,7 +1,7 @@
 #include "../headers/Player.h"
 
 Player::Player(float centerx, float centery) : Square(centerx, centery, 0.02f){
-	direction = Keys::UP;
+	direction = Keys::RIGHT;
     Square::setColor(Color::BLUE);
 }
 
@@ -11,6 +11,10 @@ const Keys Player::getDirection(){
 
 void Player::setDirection(Keys K){
 	direction = K;
+}
+
+void Player::setTarget(int i){
+	target = i;
 }
 
 void Player::updateCenter(){
@@ -29,6 +33,8 @@ void Player::update(){
 		trans = glm::translate(trans, glm::vec3(0.0f, -0.0003f, 0.0f));
 	else if (getDirection() == Keys::RIGHT)
 		trans = glm::translate(trans, glm::vec3(0.0003f, 0.0f, 0.0f));
+	else if (getDirection() == Keys::STOP)
+		trans = glm::translate(trans, glm::vec3(0.0f, 0.0f, 0.0f));
 	
 	for(int i=0; i < 4; i ++){
 		glm::vec4 tmp = trans * glm::vec4(getVertices()[i],1);
@@ -37,8 +43,8 @@ void Player::update(){
 
 	updateCenter();
 
-	std::cout<<"center x : "<<center.first<<std::endl;
-	std::cout<<"center y : "<<center.second<<std::endl;
+	/*std::cout<<"center x : "<<center.first<<std::endl;
+	std::cout<<"center y : "<<center.second<<std::endl;*/
 
 	glBindBuffer(GL_ARRAY_BUFFER, VAO);
 	

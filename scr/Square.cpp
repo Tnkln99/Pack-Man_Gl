@@ -11,11 +11,6 @@ Square::Square(float centerx, float centery, float size)
 	this->loadSquare();
 }
 
-const int Square::getCoord()
-{
-    return this->coord;
-}
-
 const glm::vec3* Square::getVertices(){
 	return this->vertices;
 }

@@ -36,11 +36,11 @@ void Carte::loadMap(){
     }
 
     for(int i = 0; i < 40 ; i++){ //nombre de ligne de map
-        for (int j =0; j < 41; j++){ // nombre de cologne de map
+        for (int j =0; j < 40; j++){ // nombre de cologne de map
             //std::cout<<tmpGraph[i * 40 + j]; 
             // initialisation de notre graph.
             if(tmpGraph[i * 40 + j] == ' '){
-                std::cout<<" "; // printing it to be sure that it is correct
+                //std::cout<<" "; // printing it to be sure that it is correct
                 GrapMap.insert(std::pair<int,std::vector<int>>(i,{}));
                 if(tmpGraph[(i+1) * 40 + j] == ' ')
                     GrapMap[i].push_back((i+1) * 40 + j);
@@ -53,14 +53,14 @@ void Carte::loadMap(){
             }
             // initialisation des murs
             else if(tmpGraph[i * 40 + j] == 'B'){
-                std::cout<<"B"; // printing it to be sure that it is correct
+                //std::cout<<"B"; // printing it to be sure that it is correct
                 std::pair<float,float> x_y = indiceToCoordinate(i * 40 + j);
                 walls.push_back(Wall(x_y.first,x_y.second));
             }
-            else
-                std::cout<<"Z"; // printing it to be sure that it is correct
+            //else
+                //std::cout<<"Z"; // printing it to be sure that it is correct
         }
-        std::cout<<std::endl; // printing it to be sure that it is correct
+        //std::cout<<std::endl; // printing it to be sure that it is correct
     }
 
     /*for(int i = 0; i < walls.size(); i++){
@@ -83,6 +83,10 @@ const int Carte::coordinateToIndice(float x, float y){
     return indice;
 }
 
+const int Carte::getPlayerIndice(){
+    return coordinateToIndice(this->player.getCenter().first,this->player.getCenter().second);
+}
+
 void Carte::drawMap(){
     player.drawSquare();
     for(int i = 0; i < walls.size(); i++){
@@ -92,6 +96,20 @@ void Carte::drawMap(){
 
 void Carte::update(){
     drawMap();
+    
+    if (this->player.getDirection() == Keys::UP){
+        this->player.setTarget(this->getPlayerIndice() - 40);
+    }
+    else if (this->player.getDirection() == Keys::DOWN){
+        this->player.setTarget(this->getPlayerIndice() + 40);
+    }
+    else if (this->player.getDirection() == Keys::LEFT){
+        this->player.setTarget(this->getPlayerIndice() - 1);
+    }
+    else if (this->player.getDirection() == Keys::RIGHT){
+        this->player.setTarget(this->getPlayerIndice() + 1);
+    }
+    //if graphMap[getPlayerIndice()].contsains(player.getTarget) is empty, player.setDirection(Keys::NONE);
     //player.update();
 }
 

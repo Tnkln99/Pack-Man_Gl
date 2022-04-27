@@ -13,7 +13,6 @@
 
 class Square{
 private:
-    int coord; //coordinate of the square for the graph
     Color color;
 protected:
     glm::vec3 vertices[4];
@@ -23,7 +22,6 @@ public:
 
     Square(float, float, float);
 
-    const int getCoord();
     const glm::vec3* getVertices();
     const Color getColor();
     const std::pair<float,float> getCenter();

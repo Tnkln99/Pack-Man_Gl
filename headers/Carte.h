@@ -11,7 +11,7 @@
 class Carte{
 private:
     float points;
-    Player player = Player(indiceToCoordinate(60).first,indiceToCoordinate(60).second);
+    Player player = Player(indiceToCoordinate(659).first,indiceToCoordinate(659).second);
     std::vector<Wall> walls;
     std::map <int,std::vector<int>> GrapMap;
 public:
@@ -19,15 +19,15 @@ public:
 
     const float getPoints();
     const Player getPlayer();
-    const std::map<int,std::vector<int>> getGraphCarte();
+    const std::map<int,std::vector<int>> getGraphMap();
     const std::vector<Wall> getWalls();
     const Keys getLastPressedKey();
+    const int getPlayerIndice();
 
     void setPlayerDirection(Keys direction);
 
     void loadMap();
     void drawMap();
-    void drawSpace();
 
     const std::pair<float,float> indiceToCoordinate(int);
     const int coordinateToIndice(float,float);
