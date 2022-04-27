@@ -40,7 +40,7 @@ int main()
 	// So that means we only have the modern functions
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	// Create a GLFWwindow object of 800 by 800 pixels, naming it "YoutubeOpenGL"
+	// Create a GLFWwindow object of 800 by 800 pixels, naming it "window"
 	GLFWwindow* window = glfwCreateWindow(1000, 1000, "Window", NULL, NULL);
 	// Error check if the window fails to create
 	if (window == NULL)
@@ -56,7 +56,7 @@ int main()
 	gladLoadGL();
 	// Specify the viewport of OpenGL in the Window
 	// In this case the viewport goes from x = 0, y = 0, to x = 800, y = 800
-	glViewport(0, 0, 1000, 1000);
+	//glViewport(0, 0, 1400, 1400);
 
 
 

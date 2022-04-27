@@ -2,6 +2,8 @@
 
 Square::Square(float centerx, float centery, float size) 
 {
+    center.first = centerx;
+    center.second = centery;
     vertices[0] = glm::vec3(centerx + size,  centery + size, 0.0f); // top right // 0
     vertices[1] = glm::vec3(centerx + size, centery - size, 0.0f);  // bottom right // 1
     vertices[2] = glm::vec3(centerx - size, centery - size, 0.0f);  // bottom left // 2

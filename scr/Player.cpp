@@ -1,6 +1,6 @@
 #include "../headers/Player.h"
 
-Player::Player(float centerx, float centery) : Square(centerx, centery, 0.05f){
+Player::Player(float centerx, float centery) : Square(centerx, centery, 0.02f){
 	direction = Keys::UP;
     Square::setColor(Color::BLUE);
 }
@@ -37,8 +37,8 @@ void Player::update(){
 
 	updateCenter();
 
-	/*std::cout<<"center x : "<<center.first<<std::endl;
-	std::cout<<"center y : "<<center.second<<std::endl;*/
+	std::cout<<"center x : "<<center.first<<std::endl;
+	std::cout<<"center y : "<<center.second<<std::endl;
 
 	glBindBuffer(GL_ARRAY_BUFFER, VAO);
 	

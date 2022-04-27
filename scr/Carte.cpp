@@ -37,9 +37,10 @@ void Carte::loadMap(){
 
     for(int i = 0; i < 40 ; i++){ //nombre de ligne de map
         for (int j =0; j < 41; j++){ // nombre de cologne de map
-            std::cout<<tmpGraph[i * 40 + j]; // printing it to be sure that it is correct
+            //std::cout<<tmpGraph[i * 40 + j]; 
             // initialisation de notre graph.
             if(tmpGraph[i * 40 + j] == ' '){
+                std::cout<<" "; // printing it to be sure that it is correct
                 GrapMap.insert(std::pair<int,std::vector<int>>(i,{}));
                 if(tmpGraph[(i+1) * 40 + j] == ' ')
                     GrapMap[i].push_back((i+1) * 40 + j);
@@ -52,12 +53,19 @@ void Carte::loadMap(){
             }
             // initialisation des murs
             else if(tmpGraph[i * 40 + j] == 'B'){
+                std::cout<<"B"; // printing it to be sure that it is correct
                 std::pair<float,float> x_y = indiceToCoordinate(i * 40 + j);
                 walls.push_back(Wall(x_y.first,x_y.second));
             }
+            else
+                std::cout<<"Z"; // printing it to be sure that it is correct
         }
         std::cout<<std::endl; // printing it to be sure that it is correct
     }
+
+    /*for(int i = 0; i < walls.size(); i++){
+        std::cout<<"Wall: "<<i<<" "<<walls[i].getCenter().first<<" "<<walls[i].getCenter().second<<std::endl;
+    }*/
 
     drawMap();
 
@@ -65,13 +73,14 @@ void Carte::loadMap(){
 }
 
 const std::pair<float,float> Carte::indiceToCoordinate(int indice){
-    std::pair<float,float> result;
-    int i = int(indice / 40);
-    int j = indice % 41;
-    //burasi yanlis..
-    result.second = -0.5f + ((j+1) * 0.05f) + 0.025f;
-    result.first = 0.5f - ((i+1) * 0.05f) + 0.025f;
-    return result;
+    float x = -1.0f + ((indice % 40) * 0.04f) + 0.02f;
+    float y = 1.0f - ((indice / 40) * 0.04f) - 0.02f;
+    return std::pair<float,float>(x,y);
+}
+
+const int Carte::coordinateToIndice(float x, float y){
+    int indice = (int)((x + 1.0f) * 40.0f + (y - 1.0f) * 40.0f * 40.0f);
+    return indice;
 }
 
 void Carte::drawMap(){
@@ -83,7 +92,7 @@ void Carte::drawMap(){
 
 void Carte::update(){
     drawMap();
-    player.update();
+    //player.update();
 }
 
 void Carte::deleteCarte(){

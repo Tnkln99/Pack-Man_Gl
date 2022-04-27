@@ -11,7 +11,7 @@
 class Carte{
 private:
     float points;
-    Player player = Player(0.0f,0.0f);
+    Player player = Player(indiceToCoordinate(60).first,indiceToCoordinate(60).second);
     std::vector<Wall> walls;
     std::map <int,std::vector<int>> GrapMap;
 public:
@@ -30,6 +30,7 @@ public:
     void drawSpace();
 
     const std::pair<float,float> indiceToCoordinate(int);
+    const int coordinateToIndice(float,float);
 
     void update();
 
