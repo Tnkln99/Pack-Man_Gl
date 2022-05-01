@@ -37,6 +37,10 @@ void Player::setSavedDir(Keys k){
 	this->savedDirection = k;
 }
 
+void Player::setCenter(float x, float y){
+	Square::setCenter(x,y);
+}
+
 
 void Player::update(){
 	glm::mat4 trans = glm:: mat4(1.0f);

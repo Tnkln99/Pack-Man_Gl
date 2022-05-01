@@ -22,6 +22,7 @@ public:
     void setTarget(int);
     void setCoord(int);
     void setSavedDir(Keys);
+    void setCenter(float,float) override;
     
     void update();
 };

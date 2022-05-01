@@ -28,7 +28,7 @@ public:
 
     void setColor(Color);
     void setVertices(int,double,double,double);
-    void setCenter(float,float);
+    virtual void setCenter(float,float);
 
     void loadSquare();
     void drawSquare();

@@ -21,11 +21,7 @@ const std::map<int,std::vector<int>> Carte::getGraphMap(){
 }
 
 void Carte::setPlayerDirection(Keys direction){
-    std::cout<< indiceToCoordinate(player.getCoord()).first << " ";
-    std::cout<< player.getCenter().first<<std::endl;
-
-    std::cout<< indiceToCoordinate(player.getCoord()).second << " ";
-    std::cout<< player.getCenter().second<<std::endl;
+    
     if ( indiceToCoordinate(player.getCoord()).first != player.getCenter().first && indiceToCoordinate(player.getCoord()).second != player.getCenter().second){
         player.setSavedDir(direction);
     }
@@ -33,8 +29,10 @@ void Carte::setPlayerDirection(Keys direction){
         this->player.setDirection(player.getSavedDir());
         player.setSavedDir(Keys::NONE);
     }
-    else
+    else{
         player.setDirection(direction);
+    }
+        
 }
 
 void Carte::loadMap(){
@@ -86,12 +84,12 @@ const std::pair<float,float> Carte::indiceToCoordinate(int indice){
 }
 
 const int Carte::coordinateToIndice(float x,float y){
-    int cptx = 0;
+    int cptx = 0; // j
     while(x - 0.02f >= -1.0f){
         x -= 0.04f;
         cptx++;
     }
-    int cpty = 0;
+    int cpty = 0; // i
     while(y + 0.02f<= 1.0f){
         y += 0.04f;
         cpty++;
@@ -129,6 +127,10 @@ void Carte::update(){
         this->player.setTarget(playerIndice + 1);
     }
 
+    if(coordinateToIndice(player.getCenter().first,player.getCenter().second)!=player.getCoord()){
+        player.setCoord(coordinateToIndice(player.getCenter().first,player.getCenter().second));
+    }
+
     std::vector<int> moveableSpaces = GrapMap[getPlayerIndice()];
 
     int target = player.getTarget();
@@ -143,22 +145,11 @@ void Carte::update(){
     if(cpt == moveableSpaces.size())
         player.setDirection(Keys::STOP);
 
-    /*bool isCollided = player.getCollided();
+    std::cout<< indiceToCoordinate(player.getCoord()).first << " ";
+    std::cout<< player.getCenter().first<<std::endl;
 
-    for(int i = 0; i < walls.size();i++){
-        glm::vec3 vertice3 = player.getVertices()[3];
-        glm::vec3 vertice1 = player.getVertices()[1];
-        std::pair<float,float> l1,r1;
-        l1.first = vertice3.x;
-        l1.second = vertice3.y;
-        r1.first = vertice1.x;
-        r1.second = vertice1.y;  
-        if(walls[i].collide(l1,r1) && !isCollided){
-            player.setCollided(true);
-            player.setDirection(Keys::STOP);
-            break;
-        }          
-    }*/
+    std::cout<< indiceToCoordinate(player.getCoord()).second << " ";
+    std::cout<< player.getCenter().second<<std::endl;
 
 
     player.update();
