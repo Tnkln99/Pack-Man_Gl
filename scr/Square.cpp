@@ -34,6 +34,30 @@ void Square::setVertices(int i,double x,double y, double z){
 	vertices[i].z = z;
 }
 
+bool Square::collide(std::pair<float,float> l2,std::pair<float,float> r2){
+    std::pair<float,float> l1,r1;
+    l1.first = vertices[3].x;
+    l1.second = vertices[3].y;
+    r1.first = vertices[1].x;
+    r1.second = vertices[1].y;
+
+    if (l1.first == r1.first || l1.second == r1.second || l2.first == r2.first
+        || l2.second == r2.second) {
+        // the line cannot have positive overlap
+        return false;
+    }
+ 
+    // If one rectangle is on left side of other
+    if (l1.first >= r2.first || l2.first >= r1.first)
+        return false;
+ 
+    // If one rectangle is above other
+    if (r1.second >= l2.second || r2.second >= l1.second)
+        return false;
+ 
+    return true;
+}
+
 void Square::loadSquare()
 {
 	unsigned int indices[] = {  

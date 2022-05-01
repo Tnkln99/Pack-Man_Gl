@@ -29,6 +29,8 @@ public:
     void setColor(Color);
     void setVertices(int,double,double,double);
 
+    bool collide(std::pair<float,float>,std::pair<float,float>);
+
     void loadSquare();
     void drawSquare();
 

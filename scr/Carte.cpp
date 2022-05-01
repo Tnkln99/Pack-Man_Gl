@@ -2,7 +2,17 @@
 
 
 Carte::Carte(){
+    std::cout<<player.getCenter().first<<" "<<player.getCenter().second<<std::endl;
+    std::cout<<getPlayerIndice()<<std::endl;
     this->points = 0;
+    for(int i = 0; i < 40; i++){
+        for(int j = 0; j < 40; j++){
+            indextoCord[i][j] = indiceToCoordinate(i * 40 + j);
+            std::pair<int,int> i_j;
+            i_j.first = i;
+            i_j.second = j;
+        }
+    }
     this->loadMap();
 }
 
@@ -19,7 +29,12 @@ const std::map<int,std::vector<int>> Carte::getGraphMap(){
 }
 
 void Carte::setPlayerDirection(Keys direction){
-    this->player.setDirection(direction);
+    for(int i = 0; i < 40; i++){
+        for(int j = 0; j < 40; j++){
+            if(player.getCenter().first == indextoCord[i][j].first && player.getCenter().second == indextoCord[i][j].second)
+                this->player.setDirection(direction);
+        }
+    }
 }
 
 void Carte::loadMap(){
@@ -54,7 +69,7 @@ void Carte::loadMap(){
             }
             // initialisation des murs
             else if(tmpGraph[i * 40 + j] == 'B'){
-                std::pair<float,float> x_y = indiceToCoordinate(i * 40 + j);
+                std::pair<float,float> x_y = indextoCord[i][j];
                 walls.push_back(Wall(x_y.first,x_y.second));
             }
             //else
@@ -71,13 +86,23 @@ const std::pair<float,float> Carte::indiceToCoordinate(int indice){
     return std::pair<float,float>(x,y);
 }
 
-
-const int Carte::coordinateToIndice(float x, float y){
-    return 25 * (x + y) / (1.0f - (1.0f/40 * 40) - 1.0f/40);
+const int Carte::coordinateToIndice(float x,float y){
+    int cptx = 0;
+    while(x - 0.02f >= -1.0f){
+        x -= 0.04f;
+        cptx++;
+    }
+    int cpty = 0;
+    while(y + 0.02f<= 1.0f){
+        y += 0.04f;
+        cpty++;
+    }
+    //std::cout<<"cptx: "<<cptx<<" cpty: "<<cpty<<std::endl;
+    return cpty * 40 + cptx;
 }
 
 const int Carte::getPlayerIndice(){
-    return coordinateToIndice(this->player.getCenter().first,this->player.getCenter().second);
+    return coordinateToIndice(player.getCenter().first,player.getCenter().second);
 }
 
 void Carte::drawMap(){
@@ -89,37 +114,55 @@ void Carte::drawMap(){
 
 void Carte::update(){
     drawMap();
-    
+
+    int playerIndice = this->getPlayerIndice();
+
     if (this->player.getDirection() == Keys::UP){
-        this->player.setTarget(this->getPlayerIndice() - 40);
+        this->player.setTarget(playerIndice - 40);
     }
     else if (this->player.getDirection() == Keys::DOWN){
-        this->player.setTarget(this->getPlayerIndice() + 40);
+        this->player.setTarget(playerIndice + 40);
     }
     else if (this->player.getDirection() == Keys::LEFT){
-        this->player.setTarget(this->getPlayerIndice() - 1);
+        this->player.setTarget(playerIndice - 1);
     }
     else if (this->player.getDirection() == Keys::RIGHT){
-        this->player.setTarget(this->getPlayerIndice() + 1);
+        this->player.setTarget(playerIndice + 1);
     }
 
-    /*std::vector<int> moveableSpaces = GrapMap[getPlayerIndice()];
+    std::vector<int> moveableSpaces = GrapMap[getPlayerIndice()];
 
-    for(int i = 0; i < moveableSpaces.size(); i++){
-        std::cout<<moveableSpaces[i]<<" ";
-    }*/
+    int target = player.getTarget();
+    int cpt = 0;
+    for(int i = 0; i < moveableSpaces.size(); i ++){
+        if(moveableSpaces[i]==target){
+            break;
+        }
+        cpt++;
+    }
 
-
-    int target = this->player.getTarget();
-
-    /*if (std::find(moveableSpaces.begin(), moveableSpaces.end(), target) == moveableSpaces.end()){
+    if(cpt == moveableSpaces.size())
         player.setDirection(Keys::STOP);
-    }
-    else{
-        std::cout<<"cant move "<<std::endl;
+
+    /*bool isCollided = player.getCollided();
+
+    for(int i = 0; i < walls.size();i++){
+        glm::vec3 vertice3 = player.getVertices()[3];
+        glm::vec3 vertice1 = player.getVertices()[1];
+        std::pair<float,float> l1,r1;
+        l1.first = vertice3.x;
+        l1.second = vertice3.y;
+        r1.first = vertice1.x;
+        r1.second = vertice1.y;  
+        if(walls[i].collide(l1,r1) && !isCollided){
+            player.setCollided(true);
+            player.setDirection(Keys::STOP);
+            break;
+        }          
     }*/
-    
-    //player.update();
+
+
+    player.update();
 }
 
 void Carte::deleteCarte(){
