@@ -1,13 +1,16 @@
 #include "../headers/Player.h"
 
 Player::Player(float centerx, float centery) : Square(centerx, centery, 0.02f){
-	collided = false;
 	direction = Keys::STOP;
     Square::setColor(Color::BLUE);
 }
 
 const Keys Player::getDirection(){
 	return this->direction;
+}
+
+const Keys Player::getSavedDir(){
+	return this->savedDirection;
 }
 
 const int Player::getTarget(){
@@ -18,14 +21,7 @@ const int Player::getCoord(){
 	return this->coord;
 }
 
-const bool Player::getCollided(){
-	return this->collided;
-}
-
 void Player::setDirection(Keys K){
-	if(K != Keys::STOP){
-		collided = false;
-	}
 	direction = K;
 }
 
@@ -37,29 +33,29 @@ void Player::setCoord(int i){
 	coord = i;
 }
 
-void Player::setCollided(bool b){
-	collided = b;
+void Player::setSavedDir(Keys k){
+	this->savedDirection = k;
 }
 
-void Player::updateCenter(){
-	center.first = vertices[0].x - 0.05f;
-	center.second = vertices[0].y - 0.05f;
-}
 
 void Player::update(){
 	glm::mat4 trans = glm:: mat4(1.0f);
     //std::cout<< MoveableSquare::getDirection() <<std::endl;
 	if(getDirection() == Keys::UP){
 		trans = glm::translate(trans, glm::vec3(0.0f, 0.0002f, 0.0f));
+		setCenter(center.first,center.second + 0.0002f);
 	}  	
 	else if (getDirection() == Keys::LEFT){
 		trans = glm::translate(trans, glm::vec3(-0.0002f, 0.0f, 0.0f));
+		setCenter(center.first-0.0002f,center.second);
 	}
 	else if (getDirection() == Keys::DOWN){
 		trans = glm::translate(trans, glm::vec3(0.0f, -0.0002f, 0.0f));
+		setCenter(center.first,center.second-0.0002f);
 	}
 	else if (getDirection() == Keys::RIGHT){
 		trans = glm::translate(trans, glm::vec3(0.0002f, 0.0f, 0.0f));
+		setCenter(center.first+0.0002f,center.second);
 	}	
 	else if (getDirection() == Keys::STOP)
 		trans = glm::translate(trans, glm::vec3(0.0f, 0.0f, 0.0f));
@@ -69,7 +65,6 @@ void Player::update(){
 		setVertices(i, tmp.x, tmp.y, tmp.z);
 	}
 
-	updateCenter();
 
 	/*std::cout<<"center x : "<<center.first<<std::endl;
 	std::cout<<"center y : "<<center.second<<std::endl;*/

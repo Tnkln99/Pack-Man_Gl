@@ -2,17 +2,9 @@
 
 
 Carte::Carte(){
-    std::cout<<player.getCenter().first<<" "<<player.getCenter().second<<std::endl;
-    std::cout<<getPlayerIndice()<<std::endl;
     this->points = 0;
-    for(int i = 0; i < 40; i++){
-        for(int j = 0; j < 40; j++){
-            indextoCord[i][j] = indiceToCoordinate(i * 40 + j);
-            std::pair<int,int> i_j;
-            i_j.first = i;
-            i_j.second = j;
-        }
-    }
+    player.setCoord(getPlayerIndice());
+    std::cout<<player.getCoord()<<std::endl;
     this->loadMap();
 }
 
@@ -29,12 +21,20 @@ const std::map<int,std::vector<int>> Carte::getGraphMap(){
 }
 
 void Carte::setPlayerDirection(Keys direction){
-    for(int i = 0; i < 40; i++){
-        for(int j = 0; j < 40; j++){
-            if(player.getCenter().first == indextoCord[i][j].first && player.getCenter().second == indextoCord[i][j].second)
-                this->player.setDirection(direction);
-        }
+    std::cout<< indiceToCoordinate(player.getCoord()).first << " ";
+    std::cout<< player.getCenter().first<<std::endl;
+
+    std::cout<< indiceToCoordinate(player.getCoord()).second << " ";
+    std::cout<< player.getCenter().second<<std::endl;
+    if ( indiceToCoordinate(player.getCoord()).first != player.getCenter().first && indiceToCoordinate(player.getCoord()).second != player.getCenter().second){
+        player.setSavedDir(direction);
     }
+    else if (player.getSavedDir() != Keys::NONE){
+        this->player.setDirection(player.getSavedDir());
+        player.setSavedDir(Keys::NONE);
+    }
+    else
+        player.setDirection(direction);
 }
 
 void Carte::loadMap(){
@@ -69,14 +69,13 @@ void Carte::loadMap(){
             }
             // initialisation des murs
             else if(tmpGraph[i * 40 + j] == 'B'){
-                std::pair<float,float> x_y = indextoCord[i][j];
+                std::pair<float,float> x_y = indiceToCoordinate(i*40+j);
                 walls.push_back(Wall(x_y.first,x_y.second));
             }
             //else
                 //std::cout<<"Z"; // printing it to be sure that it is correct
         }
     }
-
     drawMap();
 }
 

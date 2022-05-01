@@ -14,7 +14,6 @@ private:
     Player player = Player(indiceToCoordinate(659).first,indiceToCoordinate(659).second);
     std::vector<Wall> walls;
     std::map <int,std::vector<int>> GrapMap;  
-    std::pair<float,float> indextoCord[40][40];
 public:
     Carte();
 

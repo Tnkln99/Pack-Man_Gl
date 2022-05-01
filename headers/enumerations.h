@@ -1,2 +1,2 @@
-enum class Keys{ UP, DOWN, RIGHT, LEFT, STOP};
+enum class Keys{ UP, DOWN, RIGHT, LEFT, STOP, NONE};
 enum class Color {RED, BLUE, PURPLE, ORANGE, YELLOW};

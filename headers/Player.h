@@ -6,23 +6,22 @@ class Player : public Square{
 private:
     int health = 4;
     Keys direction;
+    Keys savedDirection;
     int target; //indice de la case cible
     int coord; //indice of the player on the graph
-    bool collided;
 public:
     Player(float,float);
 
     const Keys getDirection();
+    const Keys getSavedDir();
     const int getTarget();
     const int getCoord();
-    const bool getCollided();
 
     void setDirection(Keys);
     void setCoord(float,float);
     void setTarget(int);
     void setCoord(int);
-    void setCollided(bool);
+    void setSavedDir(Keys);
     
     void update();
-    void updateCenter();
 };
