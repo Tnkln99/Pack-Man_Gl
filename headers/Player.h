@@ -11,6 +11,7 @@ public:
     Player(float,float);
 
     const Keys getDirection();
+    const int getTarget();
 
     void setDirection(Keys);
     void setCoord(float,float);

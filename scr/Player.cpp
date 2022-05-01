@@ -9,6 +9,10 @@ const Keys Player::getDirection(){
 	return this->direction;
 }
 
+const int Player::getTarget(){
+	return this->target;
+}
+
 void Player::setDirection(Keys K){
 	direction = K;
 }

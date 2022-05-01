@@ -89,6 +89,7 @@ int main()
 	//Player square = Player(0.0f, 0.0f);
 	Carte deneme = Carte();
 	
+	
 	// Main while loop
 	while (!glfwWindowShouldClose(window))
 	{

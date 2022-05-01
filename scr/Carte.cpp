@@ -14,6 +14,10 @@ const Keys Carte::getLastPressedKey(){
     return this->player.getDirection();
 }
 
+const std::map<int,std::vector<int>> Carte::getGraphMap(){
+    return this->GrapMap;
+}
+
 void Carte::setPlayerDirection(Keys direction){
     this->player.setDirection(direction);
 }
@@ -36,40 +40,29 @@ void Carte::loadMap(){
     }
 
     for(int i = 0; i < 40 ; i++){ //nombre de ligne de map
-        for (int j =0; j < 40; j++){ // nombre de cologne de map
-            //std::cout<<tmpGraph[i * 40 + j]; 
-            // initialisation de notre graph.
+        for (int j = 0; j < 40; j++){ // nombre de cologne de map 
             if(tmpGraph[i * 40 + j] == ' '){
-                //std::cout<<" "; // printing it to be sure that it is correct
-                GrapMap.insert(std::pair<int,std::vector<int>>(i,{}));
+                GrapMap.insert({int (i * 40 + j), {}});
                 if(tmpGraph[(i+1) * 40 + j] == ' ')
-                    GrapMap[i].push_back((i+1) * 40 + j);
+                    GrapMap[i * 40 + j].push_back((i+1) * 40 + j);
                 if(tmpGraph[(i-1) * 40 + j] == ' ')
-                    GrapMap[i].push_back((i-1) * 40 + j);
+                    GrapMap[i * 40 + j].push_back((i-1) * 40 + j);
                 if(tmpGraph[i * 40 + j+1] == ' ')
-                    GrapMap[i].push_back(i * 40 + j+1);
+                    GrapMap[i * 40 + j].push_back(i * 40 + j+1);
                 if(tmpGraph[i * 40 + j-1] == ' ')
-                    GrapMap[i].push_back(i * 40 + j-1);
+                    GrapMap[i * 40 + j].push_back(i * 40 + j-1);
             }
             // initialisation des murs
             else if(tmpGraph[i * 40 + j] == 'B'){
-                //std::cout<<"B"; // printing it to be sure that it is correct
                 std::pair<float,float> x_y = indiceToCoordinate(i * 40 + j);
                 walls.push_back(Wall(x_y.first,x_y.second));
             }
             //else
                 //std::cout<<"Z"; // printing it to be sure that it is correct
         }
-        //std::cout<<std::endl; // printing it to be sure that it is correct
     }
 
-    /*for(int i = 0; i < walls.size(); i++){
-        std::cout<<"Wall: "<<i<<" "<<walls[i].getCenter().first<<" "<<walls[i].getCenter().second<<std::endl;
-    }*/
-
     drawMap();
-
-    map.close();
 }
 
 const std::pair<float,float> Carte::indiceToCoordinate(int indice){
@@ -78,9 +71,9 @@ const std::pair<float,float> Carte::indiceToCoordinate(int indice){
     return std::pair<float,float>(x,y);
 }
 
+
 const int Carte::coordinateToIndice(float x, float y){
-    int indice = (int)((x + 1.0f) * 40.0f + (y - 1.0f) * 40.0f * 40.0f);
-    return indice;
+    return 25 * (x + y) / (1.0f - (1.0f/40 * 40) - 1.0f/40);
 }
 
 const int Carte::getPlayerIndice(){
@@ -109,7 +102,23 @@ void Carte::update(){
     else if (this->player.getDirection() == Keys::RIGHT){
         this->player.setTarget(this->getPlayerIndice() + 1);
     }
-    //if graphMap[getPlayerIndice()].contsains(player.getTarget) is empty, player.setDirection(Keys::NONE);
+
+    /*std::vector<int> moveableSpaces = GrapMap[getPlayerIndice()];
+
+    for(int i = 0; i < moveableSpaces.size(); i++){
+        std::cout<<moveableSpaces[i]<<" ";
+    }*/
+
+
+    int target = this->player.getTarget();
+
+    /*if (std::find(moveableSpaces.begin(), moveableSpaces.end(), target) == moveableSpaces.end()){
+        player.setDirection(Keys::STOP);
+    }
+    else{
+        std::cout<<"cant move "<<std::endl;
+    }*/
+    
     //player.update();
 }
 
