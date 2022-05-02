@@ -1,11 +1,12 @@
 #pragma once
 #include <stdio.h>
-#include <glad/glad.h>
+#include "glad.h"
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "enumerations.h"
 #include <utility>
+#include <iostream>
 
 
 //valgrind
@@ -21,6 +22,9 @@ public:
     unsigned int VAO, VBO, EBO;
 
     Square(float, float, float);
+
+    const std::pair<float,float> indiceToCoordinate(int);
+    const int coordinateToIndice(float,float);
 
     const glm::vec3* getVertices();
     const Color getColor();

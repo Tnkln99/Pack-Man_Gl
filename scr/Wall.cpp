@@ -1,5 +1,5 @@
 #include "../headers/Wall.h"
 
-Wall::Wall(float centerx, float centery) : Square(centerx, centery, 0.02f){
+Wall::Wall(int indice) : Square(indiceToCoordinate(indice).first, indiceToCoordinate(indice).second, 0.02f){
     Square::setColor(Color::PURPLE);
 }

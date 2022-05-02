@@ -6,12 +6,13 @@
 #include <string>
 #include <utility> 
 #include <vector>
+#include <algorithm>
 
 
 class Carte{
 private:
     float points;
-    Player player = Player(indiceToCoordinate(659).first,indiceToCoordinate(659).second);
+    Player player = Player(659);
     std::vector<Wall> walls;
     std::map <int,std::vector<int>> GrapMap;  
 public:
@@ -28,9 +29,6 @@ public:
 
     void loadMap();
     void drawMap();
-
-    const std::pair<float,float> indiceToCoordinate(int);
-    const int coordinateToIndice(float,float);
 
     void update();
 

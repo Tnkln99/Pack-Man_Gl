@@ -1,6 +1,6 @@
 #include "../headers/Player.h"
 
-Player::Player(float centerx, float centery) : Square(centerx, centery, 0.02f){
+Player::Player(int indice) : Square(indiceToCoordinate(indice).first, indiceToCoordinate(indice).second, 0.02f){
 	direction = Keys::STOP;
     Square::setColor(Color::BLUE);
 }
@@ -21,8 +21,18 @@ const int Player::getCoord(){
 	return this->coord;
 }
 
+const bool Player::CanMove() {
+    return this->canMove;
+}
+
 void Player::setDirection(Keys K){
 	direction = K;
+    if(K == Keys::STOP)
+        canMove = true;
+}
+
+void Player::setCanMove(bool canMove) {
+    this->canMove = canMove;
 }
 
 void Player::setTarget(int i){
@@ -43,12 +53,17 @@ void Player::setCenter(float x, float y){
 
 
 void Player::update(){
+    //std::cout<< "Pos  :" << coord << " - target :" << target << std::endl;
 	glm::mat4 trans = glm:: mat4(1.0f);
-    //std::cout<< MoveableSquare::getDirection() <<std::endl;
+
+    std::cout << "---- Center : " << center.first << " " << center.second <<std::endl;
+    std::cout << "---- Target : " << indiceToCoordinate(target).first << " " << indiceToCoordinate(target).second <<std::endl;
+
+    // Interpolation du déplacement
 	if(getDirection() == Keys::UP){
 		trans = glm::translate(trans, glm::vec3(0.0f, 0.0002f, 0.0f));
 		setCenter(center.first,center.second + 0.0002f);
-	}  	
+	}
 	else if (getDirection() == Keys::LEFT){
 		trans = glm::translate(trans, glm::vec3(-0.0002f, 0.0f, 0.0f));
 		setCenter(center.first-0.0002f,center.second);
@@ -60,7 +75,7 @@ void Player::update(){
 	else if (getDirection() == Keys::RIGHT){
 		trans = glm::translate(trans, glm::vec3(0.0002f, 0.0f, 0.0f));
 		setCenter(center.first+0.0002f,center.second);
-	}	
+	}
 	else if (getDirection() == Keys::STOP)
 		trans = glm::translate(trans, glm::vec3(0.0f, 0.0f, 0.0f));
 	
@@ -68,6 +83,13 @@ void Player::update(){
 		glm::vec4 tmp = trans * glm::vec4(getVertices()[i],1);
 		setVertices(i, tmp.x, tmp.y, tmp.z);
 	}
+
+    // Mise à jour de l'indice
+    if(coordinateToIndice(getCenter().first,getCenter().second) != getCoord()){
+        setCoord(coordinateToIndice(getCenter().first,getCenter().second));
+        canMove = true;
+        setDirection((Keys::STOP));
+    }
 
 
 	/*std::cout<<"center x : "<<center.first<<std::endl;

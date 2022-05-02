@@ -11,6 +11,29 @@ Square::Square(float centerx, float centery, float size)
 	this->loadSquare();
 }
 
+const std::pair<float,float> Square::indiceToCoordinate(int indice){
+    float x = -1.0f + ((indice % 40) * 0.04f) + 0.02f;
+    float y = 1.0f - ((indice / 40) * 0.04f) - 0.02f;
+    return std::pair<float,float>(x,y);
+}
+
+const int Square::coordinateToIndice(float x,float y){
+
+    std::cout<<"x: "<<x<<" y: "<<y<<std::endl;
+    int cptx = 0; // j
+    while(x - 0.02f >= -1.0f){
+        x -= 0.04f;
+        cptx++;
+    }
+    int cpty = 0; // i
+    while(y + 0.02f <= 1.0f){
+        y += 0.04f;
+        cpty++;
+    }
+    std::cout<<"cptx: "<<cptx<<" cpty: "<<cpty<<std::endl;
+    return cpty * 40 + cptx;
+}
+
 const glm::vec3* Square::getVertices(){
 	return this->vertices;
 }

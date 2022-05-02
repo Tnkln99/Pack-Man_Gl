@@ -21,18 +21,8 @@ const std::map<int,std::vector<int>> Carte::getGraphMap(){
 }
 
 void Carte::setPlayerDirection(Keys direction){
-    
-    if ( indiceToCoordinate(player.getCoord()).first != player.getCenter().first && indiceToCoordinate(player.getCoord()).second != player.getCenter().second){
-        player.setSavedDir(direction);
-    }
-    else if (player.getSavedDir() != Keys::NONE){
-        this->player.setDirection(player.getSavedDir());
-        player.setSavedDir(Keys::NONE);
-    }
-    else{
+    if(player.CanMove())
         player.setDirection(direction);
-    }
-        
 }
 
 void Carte::loadMap(){
@@ -67,8 +57,7 @@ void Carte::loadMap(){
             }
             // initialisation des murs
             else if(tmpGraph[i * 40 + j] == 'B'){
-                std::pair<float,float> x_y = indiceToCoordinate(i*40+j);
-                walls.push_back(Wall(x_y.first,x_y.second));
+                walls.push_back(Wall(i*40+j));
             }
             //else
                 //std::cout<<"Z"; // printing it to be sure that it is correct
@@ -77,29 +66,8 @@ void Carte::loadMap(){
     drawMap();
 }
 
-const std::pair<float,float> Carte::indiceToCoordinate(int indice){
-    float x = -1.0f + ((indice % 40) * 0.04f) + 0.02f;
-    float y = 1.0f - ((indice / 40) * 0.04f) - 0.02f;
-    return std::pair<float,float>(x,y);
-}
-
-const int Carte::coordinateToIndice(float x,float y){
-    int cptx = 0; // j
-    while(x - 0.02f >= -1.0f){
-        x -= 0.04f;
-        cptx++;
-    }
-    int cpty = 0; // i
-    while(y + 0.02f<= 1.0f){
-        y += 0.04f;
-        cpty++;
-    }
-    //std::cout<<"cptx: "<<cptx<<" cpty: "<<cpty<<std::endl;
-    return cpty * 40 + cptx;
-}
-
 const int Carte::getPlayerIndice(){
-    return coordinateToIndice(player.getCenter().first,player.getCenter().second);
+    return player.getCoord();
 }
 
 void Carte::drawMap(){
@@ -112,47 +80,50 @@ void Carte::drawMap(){
 void Carte::update(){
     drawMap();
 
-    int playerIndice = this->getPlayerIndice();
+    //std::cout << "can move : " << player.CanMove() << std::endl;
+    if(this->player.CanMove()) {
+        int playerIndice = this->getPlayerIndice();
 
-    if (this->player.getDirection() == Keys::UP){
-        this->player.setTarget(playerIndice - 40);
-    }
-    else if (this->player.getDirection() == Keys::DOWN){
-        this->player.setTarget(playerIndice + 40);
-    }
-    else if (this->player.getDirection() == Keys::LEFT){
-        this->player.setTarget(playerIndice - 1);
-    }
-    else if (this->player.getDirection() == Keys::RIGHT){
-        this->player.setTarget(playerIndice + 1);
-    }
-
-    if(coordinateToIndice(player.getCenter().first,player.getCenter().second)!=player.getCoord()){
-        player.setCoord(coordinateToIndice(player.getCenter().first,player.getCenter().second));
-    }
-
-    std::vector<int> moveableSpaces = GrapMap[getPlayerIndice()];
-
-    int target = player.getTarget();
-    int cpt = 0;
-    for(int i = 0; i < moveableSpaces.size(); i ++){
-        if(moveableSpaces[i]==target){
-            break;
+        this->player.setCanMove(false);
+        if (this->player.getDirection() == Keys::UP){
+            this->player.setTarget(playerIndice - 40);
+            std::cout<< "up" << std::endl;
         }
-        cpt++;
+        else if (this->player.getDirection() == Keys::DOWN){
+            this->player.setTarget(playerIndice + 40);
+            std::cout<< "down" << std::endl;
+        }
+        else if (this->player.getDirection() == Keys::LEFT){
+            this->player.setTarget(playerIndice - 1);
+            std::cout<< "left" << std::endl;
+        }
+        else if (this->player.getDirection() == Keys::RIGHT){
+            this->player.setTarget(playerIndice + 1);
+            std::cout<< "right" << std::endl;
+        }
+
+
+        std::vector<int> moveableSpaces = GrapMap[playerIndice];
+
+        int target = player.getTarget();
+        /*if(std::find(moveableSpaces.begin(), moveableSpaces.end(), target) == moveableSpaces.end())
+            for(int i : moveableSpaces)
+                std::cout << "- Peut bouger en : " << i << std::endl;*/
+
+        std::cout<< target << std::endl;
+        int cpt = 0;
+        for(int i = 0; i < moveableSpaces.size(); i ++){
+            if(moveableSpaces[i]==target){
+                break;
+            }
+            cpt++;
+        }
+        if(cpt == moveableSpaces.size())
+            player.setDirection(Keys::STOP);
     }
-
-    if(cpt == moveableSpaces.size())
-        player.setDirection(Keys::STOP);
-
-    std::cout<< indiceToCoordinate(player.getCoord()).first << " ";
-    std::cout<< player.getCenter().first<<std::endl;
-
-    std::cout<< indiceToCoordinate(player.getCoord()).second << " ";
-    std::cout<< player.getCenter().second<<std::endl;
-
-
     player.update();
+
+
 }
 
 void Carte::deleteCarte(){

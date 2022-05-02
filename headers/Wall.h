@@ -4,5 +4,5 @@
 class Wall : public Square{
 private:
 public:
-    Wall(float,float);
+    Wall(int indice);
 };
