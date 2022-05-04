@@ -17,7 +17,7 @@ const std::vector<Wall> Carte::getWalls(){
     return this->walls;
 }
 
-const Keys Carte::getLastPressedKey(){
+const Directions Carte::getLastPressedKey(){
     return this->player.getDirection();
 }
 
@@ -25,7 +25,7 @@ const std::map<int,std::vector<int>> Carte::getGraphMap(){
     return this->GrapMap;
 }
 
-void Carte::setPlayerDirection(Keys direction){
+void Carte::setPlayerDirection(Directions direction){
     if(player.CanMove())
         player.setDirection(direction);
 }

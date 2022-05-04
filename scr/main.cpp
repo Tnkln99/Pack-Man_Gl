@@ -106,13 +106,13 @@ int main()
 		deneme.update();
 
 		if(keyW)
-			deneme.setPlayerDirection(Keys::UP);
+			deneme.setPlayerDirection(Directions::UP);
 		else if(keyA)
-			deneme.setPlayerDirection(Keys::LEFT);
+			deneme.setPlayerDirection(Directions::LEFT);
 		else if(keyS)
-			deneme.setPlayerDirection(Keys::DOWN);
+			deneme.setPlayerDirection(Directions::DOWN);
 		else if(keyD)
-			deneme.setPlayerDirection(Keys::RIGHT);
+			deneme.setPlayerDirection(Directions::RIGHT);
 		
 			
 

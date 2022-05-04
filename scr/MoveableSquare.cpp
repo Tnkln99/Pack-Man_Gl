@@ -2,6 +2,7 @@
 
 MoveableSquare::MoveableSquare(int indice) : Square(indiceToCoordinate(indice).first, indiceToCoordinate(indice).second, 0.02f){
 	target = indice;
+	coord = indice;
     Square::setColor(Color::BLUE);
 }
 
@@ -14,13 +15,13 @@ const int MoveableSquare::getCoord(){
 	return this->coord;
 }
 
-const Keys MoveableSquare::getDirection(){
+const Directions MoveableSquare::getDirection(){
 	return this->direction;
 }
 
-void MoveableSquare::setDirection(Keys K){
+void MoveableSquare::setDirection(Directions K){
 	direction = K;
-    if(K == Keys::STOP)
+    if(K == Directions::STOP)
         setCanMove(true);
 }
 

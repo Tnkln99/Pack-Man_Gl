@@ -22,10 +22,10 @@ public:
     const Player getPlayer();
     const std::map<int,std::vector<int>> getGraphMap();
     const std::vector<Wall> getWalls();
-    const Keys getLastPressedKey();
+    const Directions getLastPressedKey();
     const int getPlayerIndice();
 
-    void setPlayerDirection(Keys direction);
+    void setPlayerDirection(Directions direction);
 
     void loadMap();
     void drawMap();

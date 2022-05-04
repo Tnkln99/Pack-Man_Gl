@@ -1,7 +1,7 @@
 #include "../headers/Player.h"
 
 Player::Player(int indice) : MoveableSquare(indice){
-    setDirection(Keys::STOP);
+    setDirection(Directions::STOP);
 }
 
 void Player::update(std::map<int,std::vector<int>> GrapMap){
@@ -11,19 +11,19 @@ void Player::update(std::map<int,std::vector<int>> GrapMap){
         int playerIndice = getCoord();
 
         setCanMove(false);
-        if (getDirection() == Keys::UP){
+        if (getDirection() == Directions::UP){
             setTarget(playerIndice - 40);
             std::cout<< "up" << std::endl;
         }
-        else if (getDirection() == Keys::DOWN){
+        else if (getDirection() == Directions::DOWN){
             setTarget(playerIndice + 40);
             std::cout<< "down" << std::endl;
         }
-        else if (getDirection() == Keys::LEFT){
+        else if (getDirection() == Directions::LEFT){
             setTarget(playerIndice - 1);
             std::cout<< "left" << std::endl;
         }
-        else if (getDirection() == Keys::RIGHT){
+        else if (getDirection() == Directions::RIGHT){
             setTarget(playerIndice + 1);
             std::cout<< "right" << std::endl;
         }
@@ -46,7 +46,7 @@ void Player::update(std::map<int,std::vector<int>> GrapMap){
             cpt++;
         }
         if(cpt == moveableSpaces.size())
-            setDirection(Keys::STOP);
+            setDirection(Directions::STOP);
     }
 
     int target = getTarget();
@@ -59,23 +59,23 @@ void Player::update(std::map<int,std::vector<int>> GrapMap){
     std::cout << "---- Target : " << indiceToCoordinate(getTarget()).first << " " << indiceToCoordinate(getTarget()).second <<std::endl;
 
     // Interpolation du déplacement
-	if(getDirection() == Keys::UP){
+	if(getDirection() == Directions::UP){
 		trans = glm::translate(trans, glm::vec3(0.0f, 0.0002f, 0.0f));
 		setCenter(center.first,center.second + 0.0002f);
 	}
-	else if (getDirection() == Keys::LEFT){
+	else if (getDirection() == Directions::LEFT){
 		trans = glm::translate(trans, glm::vec3(-0.0002f, 0.0f, 0.0f));
 		setCenter(center.first-0.0002f,center.second);
 	}
-	else if (getDirection() == Keys::DOWN){
+	else if (getDirection() == Directions::DOWN){
 		trans = glm::translate(trans, glm::vec3(0.0f, -0.0002f, 0.0f));
 		setCenter(center.first,center.second-0.0002f);
 	}
-	else if (getDirection() == Keys::RIGHT){
+	else if (getDirection() == Directions::RIGHT){
 		trans = glm::translate(trans, glm::vec3(0.0002f, 0.0f, 0.0f));
 		setCenter(center.first+0.0002f,center.second);
 	}
-	else if (getDirection() == Keys::STOP)
+	else if (getDirection() == Directions::STOP)
 		trans = glm::translate(trans, glm::vec3(0.0f, 0.0f, 0.0f));
 	
 	for(int i=0; i < 4; i ++){
@@ -86,8 +86,9 @@ void Player::update(std::map<int,std::vector<int>> GrapMap){
     // Mise à jour de l'indice
     if(coordinateToIndice(getCenter().first,getCenter().second) != getCoord()){
         setCoord(coordinateToIndice(getCenter().first,getCenter().second));
+        setCoord(getTarget());
         setCanMove(true);
-        setDirection((Keys::STOP));
+        setDirection((Directions::STOP));
     }
 
 

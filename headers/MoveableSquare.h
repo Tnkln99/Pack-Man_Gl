@@ -8,16 +8,16 @@ private:
     int target; //indice de la case cible
     int coord; //indice of the square on the graph
     bool canMove = true;
-    Keys direction;
+    Directions direction;
 public:
     MoveableSquare(int indice);
 
     const int getTarget();
     const int getCoord();
     const bool CanMove();
-    const Keys getDirection();
+    const Directions getDirection();
 
-    void setDirection(Keys);
+    void setDirection(Directions);
     void setCanMove(bool canMove);
     void setCoord(float,float);
     void setTarget(int);
