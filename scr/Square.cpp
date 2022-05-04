@@ -23,12 +23,12 @@ const int Square::coordinateToIndice(float x,float y){
     int cptx = 0; // j
     while(x - 0.02f >= -1.0f){
         x -= 0.04f;
-        cptx++;
+        ++cptx;
     }
     int cpty = 0; // i
     while(y + 0.02f <= 1.0f){
         y += 0.04f;
-        cpty++;
+        ++cpty;
     }
     std::cout<<"cptx: "<<cptx<<" cpty: "<<cpty<<std::endl;
     return cpty * 40 + cptx;

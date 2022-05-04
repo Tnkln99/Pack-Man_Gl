@@ -1,0 +1,7 @@
+make all --dry-run --keep-going --print-directory
+make: Entering directory '/home/tnkln/Documents/Projets/Pack-Man'
+ 
+make: Nothing to be done for 'all'.
+ 
+make: Leaving directory '/home/tnkln/Documents/Projets/Pack-Man'
+ 

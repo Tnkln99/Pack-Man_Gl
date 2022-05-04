@@ -1,63 +1,62 @@
 #include "../headers/Player.h"
 
-Player::Player(int indice) : Square(indiceToCoordinate(indice).first, indiceToCoordinate(indice).second, 0.02f){
-	direction = Keys::STOP;
-    Square::setColor(Color::BLUE);
+Player::Player(int indice) : MoveableSquare(indice){
+    setDirection(Keys::STOP);
 }
 
-const Keys Player::getDirection(){
-	return this->direction;
-}
+void Player::update(std::map<int,std::vector<int>> GrapMap){
 
-const Keys Player::getSavedDir(){
-	return this->savedDirection;
-}
+    if(CanMove()) {
 
-const int Player::getTarget(){
-	return this->target;
-}
+        int playerIndice = getCoord();
 
-const int Player::getCoord(){
-	return this->coord;
-}
+        setCanMove(false);
+        if (getDirection() == Keys::UP){
+            setTarget(playerIndice - 40);
+            std::cout<< "up" << std::endl;
+        }
+        else if (getDirection() == Keys::DOWN){
+            setTarget(playerIndice + 40);
+            std::cout<< "down" << std::endl;
+        }
+        else if (getDirection() == Keys::LEFT){
+            setTarget(playerIndice - 1);
+            std::cout<< "left" << std::endl;
+        }
+        else if (getDirection() == Keys::RIGHT){
+            setTarget(playerIndice + 1);
+            std::cout<< "right" << std::endl;
+        }
 
-const bool Player::CanMove() {
-    return this->canMove;
-}
+        //enemy algosu burda enemy.tageti bulucak enemy algosu bir graph alıcak ve ona göre işlemlerini yapıcak.
 
-void Player::setDirection(Keys K){
-	direction = K;
-    if(K == Keys::STOP)
-        canMove = true;
-}
-
-void Player::setCanMove(bool canMove) {
-    this->canMove = canMove;
-}
-
-void Player::setTarget(int i){
-	target = i;
-}
-
-void Player::setCoord(int i){
-	coord = i;
-}
-
-void Player::setSavedDir(Keys k){
-	this->savedDirection = k;
-}
-
-void Player::setCenter(float x, float y){
-	Square::setCenter(x,y);
-}
+        int target = getTarget();
+        std::vector<int> moveableSpaces = GrapMap[playerIndice];
 
 
-void Player::update(){
-    //std::cout<< "Pos  :" << coord << " - target :" << target << std::endl;
+        /*if(std::find(moveableSpaces.begin(), moveableSpaces.end(), target) == moveableSpaces.end())
+            for(int i : moveableSpaces)
+                std::cout << "- Peut bouger en : " << i << std::endl;*/
+
+        int cpt = 0;
+        for(int i = 0; i < moveableSpaces.size(); i ++){
+            if(moveableSpaces[i]==target){
+                break;
+            }
+            cpt++;
+        }
+        if(cpt == moveableSpaces.size())
+            setDirection(Keys::STOP);
+    }
+
+    int target = getTarget();
+    std::cout<< "target: "<<target << std::endl;
+    std::cout<< "coord: " <<getCoord() << std::endl;
+    
 	glm::mat4 trans = glm:: mat4(1.0f);
 
     std::cout << "---- Center : " << center.first << " " << center.second <<std::endl;
-    std::cout << "---- Target : " << indiceToCoordinate(target).first << " " << indiceToCoordinate(target).second <<std::endl;
+    std::cout << "---- Target : " << indiceToCoordinate(getTarget()).first << " " << indiceToCoordinate(getTarget()).second <<std::endl;
 
     // Interpolation du déplacement
 	if(getDirection() == Keys::UP){
@@ -87,7 +86,7 @@ void Player::update(){
     // Mise à jour de l'indice
     if(coordinateToIndice(getCenter().first,getCenter().second) != getCoord()){
         setCoord(coordinateToIndice(getCenter().first,getCenter().second));
-        canMove = true;
+        setCanMove(true);
         setDirection((Keys::STOP));
     }
 

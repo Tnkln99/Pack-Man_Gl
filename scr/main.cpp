@@ -1,13 +1,8 @@
 #include <iostream>
 #include "../headers/glad.h"
 #include <GLFW/glfw3.h>
-#include <math.h>
 #include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <vector>
-#include <iostream>
-#include <math.h>
+
 
 #include "../headers/Carte.h"
 

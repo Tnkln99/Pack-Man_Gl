@@ -1,31 +1,18 @@
 #include <stdio.h>
 #include <iostream>
-#include "Square.h"
+#include "MoveableSquare.h"
+#include <map>
+#include <vector>
 
-class Player : public Square{
+class Player : public MoveableSquare{
 private:
     int health = 4;
-    Keys direction;
-    Keys savedDirection;
-    int target; //indice de la case cible
-    int coord; //indice of the player on the graph
-    bool canMove = true;
 public:
     Player(int indice);
 
-    const Keys getDirection();
-    const Keys getSavedDir();
-    const int getTarget();
-    const int getCoord();
-    const bool CanMove();
+    const int getHealth();
 
-    void setCanMove(bool canMove);
-    void setDirection(Keys);
-    void setCoord(float,float);
-    void setTarget(int);
-    void setCoord(int);
-    void setSavedDir(Keys);
-    void setCenter(float,float) override;
-    
-    void update();
+    void setHealth(int);
+
+    void update(std::map<int,std::vector<int>>);
 };

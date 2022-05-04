@@ -1,4 +1,9 @@
 #include "../headers/Carte.h"
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
 
 
 Carte::Carte(){
@@ -72,58 +77,14 @@ const int Carte::getPlayerIndice(){
 
 void Carte::drawMap(){
     player.drawSquare();
-    for(int i = 0; i < walls.size(); i++){
-        walls[i].drawSquare();
+    for(auto & wall : walls){
+        wall.drawSquare();
     }
 }
 
 void Carte::update(){
     drawMap();
-
-    //std::cout << "can move : " << player.CanMove() << std::endl;
-    if(this->player.CanMove()) {
-        int playerIndice = this->getPlayerIndice();
-
-        this->player.setCanMove(false);
-        if (this->player.getDirection() == Keys::UP){
-            this->player.setTarget(playerIndice - 40);
-            std::cout<< "up" << std::endl;
-        }
-        else if (this->player.getDirection() == Keys::DOWN){
-            this->player.setTarget(playerIndice + 40);
-            std::cout<< "down" << std::endl;
-        }
-        else if (this->player.getDirection() == Keys::LEFT){
-            this->player.setTarget(playerIndice - 1);
-            std::cout<< "left" << std::endl;
-        }
-        else if (this->player.getDirection() == Keys::RIGHT){
-            this->player.setTarget(playerIndice + 1);
-            std::cout<< "right" << std::endl;
-        }
-
-
-        std::vector<int> moveableSpaces = GrapMap[playerIndice];
-
-        int target = player.getTarget();
-        /*if(std::find(moveableSpaces.begin(), moveableSpaces.end(), target) == moveableSpaces.end())
-            for(int i : moveableSpaces)
-                std::cout << "- Peut bouger en : " << i << std::endl;*/
-
-        std::cout<< target << std::endl;
-        int cpt = 0;
-        for(int i = 0; i < moveableSpaces.size(); i ++){
-            if(moveableSpaces[i]==target){
-                break;
-            }
-            cpt++;
-        }
-        if(cpt == moveableSpaces.size())
-            player.setDirection(Keys::STOP);
-    }
-    player.update();
-
-
+    player.update(GrapMap);
 }
 
 void Carte::deleteCarte(){
