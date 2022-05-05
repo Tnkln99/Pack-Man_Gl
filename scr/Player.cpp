@@ -33,6 +33,12 @@ void Player::update(std::map<int,std::vector<int>> GrapMap){
         int target = getTarget();
         std::vector<int> moveableSpaces = GrapMap[playerIndice];
 
+        for(int i = 0; i < moveableSpaces.size(); i++){
+            std::cout<< moveableSpaces[i]<< " ";
+        }
+
+        std::cout << std::endl;
+
 
         /*if(std::find(moveableSpaces.begin(), moveableSpaces.end(), target) == moveableSpaces.end())
             for(int i : moveableSpaces)
@@ -50,13 +56,13 @@ void Player::update(std::map<int,std::vector<int>> GrapMap){
     }
 
     int target = getTarget();
-    std::cout<< "target: "<<target << std::endl;
-    std::cout<< "coord: " <<getCoord() << std::endl;
+    //std::cout<< "target: "<<target << std::endl;
+    //std::cout<< "coord: " <<getCoord() << std::endl;
     
 	glm::mat4 trans = glm:: mat4(1.0f);
 
-    std::cout << "---- Center : " << center.first << " " << center.second <<std::endl;
-    std::cout << "---- Target : " << indiceToCoordinate(getTarget()).first << " " << indiceToCoordinate(getTarget()).second <<std::endl;
+    //std::cout << "---- Center : " << center.first << " " << center.second <<std::endl;
+    //std::cout << "---- Target : " << indiceToCoordinate(getTarget()).first << " " << indiceToCoordinate(getTarget()).second <<std::endl;
 
     // Interpolation du déplacement
 	if(getDirection() == Directions::UP){
@@ -84,9 +90,13 @@ void Player::update(std::map<int,std::vector<int>> GrapMap){
 	}
 
     // Mise à jour de l'indice
-    if(coordinateToIndice(getCenter().first,getCenter().second) != getCoord()){
-        setCoord(coordinateToIndice(getCenter().first,getCenter().second));
+    std::pair<float, float> targetCenter = indiceToCoordinate(getTarget());
+    double err = std::fabs(getCenter().first - targetCenter.first) + std::fabs(getCenter().second - targetCenter.second);
+    // if(coordinateToIndice(getCenter().first,getCenter().second) != getCoord()){
+    if(err < 0.0001){
+        // setCoord(coordinateToIndice(getCenter().first,getCenter().second));
         setCoord(getTarget());
+        setCenter(targetCenter.first, targetCenter.second);
         setCanMove(true);
         setDirection((Directions::STOP));
     }

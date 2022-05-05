@@ -1,79 +1,42 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.2.1
- 
 # Built for x86_64-pc-linux-gnu
- 
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
- 
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
- 
 # This is free software: you are free to change and redistribute it.
- 
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
- 
-# Make data base, printed on Wed May  4 00:47:44 2022
- 
+# Make data base, printed on Fri May  6 00:24:32 2022
 
 # Variables
- 
 
- 
 # 'override' directive
- 
 GNUMAKEFLAGS := 
- 
 # automatic
- 
 <D = $(patsubst %/,%,$(dir $<))
- 
 # automatic
- 
 ?F = $(notdir $?)
- 
 # environment
- 
 DESKTOP_SESSION = ubuntu
- 
 # default
- 
 .SHELLFLAGS := -c
- 
 # makefile (from 'Makefile', line 7)
- 
 OBJ = $(SCR:.cpp=.o)
- 
 # environment
- 
 XDG_SESSION_CLASS = user
- 
 # environment
- 
 XDG_SESSION_TYPE = x11
- 
 # environment
- 
 VSCODE_LOG_NATIVE = false
- 
 # automatic
- 
 ?D = $(patsubst %/,%,$(dir $?))
- 
 # environment
- 
 IM_CONFIG_PHASE = 1
- 
 # automatic
- 
 @D = $(patsubst %/,%,$(dir $@))
- 
 # environment
- 
 XAUTHORITY = /run/user/1000/gdm/Xauthority
- 
 # environment
- 
 GDMSESSION = ubuntu
 # environment
 XMODIFIERS = @im=ibus
@@ -81,7 +44,6 @@ XMODIFIERS = @im=ibus
 CURDIR := /home/tnkln/Documents/Projets/Pack-Man
 # makefile
 SHELL = /bin/sh
- 
 # makefile (from 'Makefile', line 1)
 BIN = bin/packman 
 # environment
@@ -91,7 +53,7 @@ _ = /usr/share/code/code
 # makefile (from 'Makefile', line 5)
 CFLAGS = -Wall -g -std=c++11
 # environment
-JOURNAL_STREAM = 8:43725
+JOURNAL_STREAM = 8:51243
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -111,7 +73,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 1486
+MANAGERPID = 1520
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -127,7 +89,7 @@ PATH = /home/tnkln/.local/bin:/home/tnkln/.local/bin:/usr/local/sbin:/usr/local/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/tnkln-Lenovo-ideapad-530S-14IKB:@/tmp/.ICE-unix/1744,unix/tnkln-Lenovo-ideapad-530S-14IKB:/tmp/.ICE-unix/1744
+SESSION_MANAGER = local/tnkln-Lenovo-ideapad-530S-14IKB:@/tmp/.ICE-unix/1790,unix/tnkln-Lenovo-ideapad-530S-14IKB:/tmp/.ICE-unix/1790
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -137,9 +99,8 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 7f8778c1aff04af0a06ec70d88870f02
+INVOCATION_ID = 493609fcb26041119433df13b042a2ae
 # default
- 
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
 LS_COLORS = 
@@ -148,7 +109,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 22407
+GIO_LAUNCHED_DESKTOP_FILE_PID = 6948
 # automatic
 %F = $(notdir $%)
 # environment
@@ -160,7 +121,7 @@ PWD = /home/tnkln/Documents/Projets/Pack-Man
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1709
+SSH_AGENT_PID = 1751
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -189,7 +150,6 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 LC_TIME = fr_FR.UTF-8
 # default
 MAKE = $(MAKE_COMMAND)
- 
 # default
 MAKECMDGOALS := all
 # environment
@@ -201,7 +161,7 @@ CC = g++
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-c5160d2c-def9-4925-807f-0b10f1810d11.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b876a185-fc2f-40ad-8ce5-bc0fe51cfdbb.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -237,7 +197,6 @@ MAIN = main.cpp
 # environment
 GDK_BACKEND = x11
 # environment
- 
 LC_PAPER = fr_FR.UTF-8
 # environment
 GTK2_MODULES = overlay-scrollbar
@@ -272,11 +231,10 @@ LC_ADDRESS = fr_FR.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 22407
+VSCODE_PID = 6948
 # makefile (from 'Makefile', line 6)
 SCR = $(wildcard scr/*.cpp)
 # variable set hash-table stats:
- 
 # Load=112/1024=11%, Rehash=0, Collisions=19/139=14%
 
 # Pattern-specific Variable Values
@@ -286,9 +244,9 @@ SCR = $(wildcard scr/*.cpp)
 # Directories
 
 # . (device 66307, inode 8128642): 12 files, no impossibilities.
-# scr (device 66307, inode 8131518): 8 files, no impossibilities.
+# scr (device 66307, inode 8131518): 10 files, no impossibilities.
 
-# 20 files, no impossibilities in 2 directories.
+# 22 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -304,11 +262,10 @@ obj/%.o: scr/%.cpp
 all:
 #  Command line target.
 #  Implicit rule search has been done.
-#  Last modified 2022-05-03 23:49:09.749417669
+#  Last modified 2022-05-04 21:20:38.796680409
 #  File has been updated.
 #  Successfully updated.
 
- 
 # Not a target:
 scr/main.o:
 #  Implicit rule search has not been done.
@@ -324,7 +281,7 @@ obj/glad.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-04 00:43:58.580257528
+#  Last modified 2022-05-04 21:21:35.980701684
 #  File has been updated.
 #  Successfully updated.
 
@@ -334,7 +291,7 @@ scr/Player.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-bin/packman: scr/Wall.o scr/Carte.o scr/Player.o scr/Square.o scr/main.o obj/glad.o
+bin/packman: scr/Enemy.o scr/Wall.o scr/Carte.o scr/Player.o scr/Square.o scr/MoveableSquare.o scr/main.o obj/glad.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -346,10 +303,15 @@ scr/Wall.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 # Not a target:
 .DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+scr/MoveableSquare.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -362,6 +324,13 @@ scr/Square.o:
 
 # Not a target:
 scr/Carte.o:
+ 
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+scr/Enemy.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -374,20 +343,19 @@ mv:
 	mv scr/*.o ./obj
 
 # files hash-table stats:
-# Load=12/1024=1%, Rehash=0, Collisions=0/28=0%
+# Load=14/1024=1%, Rehash=0, Collisions=0/32=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 32 / storage = 286 B / avg = 8 B
- 
-# current buf: size = 8162 B / used = 286 B / count = 32 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 36 / storage = 348 B / avg = 9 B
+# current buf: size = 8162 B / used = 348 B / count = 36 / avg = 9 B
 
-# strcache performance: lookups = 42 / hit rate = 23%
+# strcache performance: lookups = 46 / hit rate = 21%
 # hash-table stats:
-# Load=32/8192=0%, Rehash=0, Collisions=2/42=5%
-# Finished Make data base on Wed May  4 00:47:44 2022
+# Load=36/8192=0%, Rehash=0, Collisions=2/46=4%
+# Finished Make data base on Fri May  6 00:24:32 2022
 
  

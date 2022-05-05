@@ -9,7 +9,6 @@
 Carte::Carte(){
     this->points = 0;
     player.setCoord(getPlayerIndice());
-    std::cout<<player.getCoord()<<std::endl;
     this->loadMap();
 }
 
