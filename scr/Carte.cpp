@@ -8,8 +8,11 @@
 
 Carte::Carte(){
     this->points = 0;
-    player.setCoord(getPlayerIndice());
     this->loadMap();
+    std::vector<int> tmp = GrapMap[498];
+    for (auto i : tmp){
+        std::cout << i << std::endl;
+    }
 }
 
 const std::vector<Wall> Carte::getWalls(){
@@ -45,7 +48,7 @@ void Carte::loadMap(){
         }
         ligne++;
     }
-
+    int cpt = 0;
     for(int i = 0; i < 40 ; i++){ //nombre de ligne de map
         for (int j = 0; j < 40; j++){ // nombre de cologne de map 
             if(tmpGraph[i * 40 + j] == ' '){
@@ -70,11 +73,8 @@ void Carte::loadMap(){
     drawMap();
 }
 
-const int Carte::getPlayerIndice(){
-    return player.getCoord();
-}
-
 void Carte::drawMap(){
+    enemy.drawSquare();
     player.drawSquare();
     for(auto & wall : walls){
         wall.drawSquare();
@@ -83,6 +83,7 @@ void Carte::drawMap(){
 
 void Carte::update(){
     drawMap();
+    enemy.update(GrapMap,player.getCoord());
     player.update(GrapMap);
 }
 
@@ -91,4 +92,5 @@ void Carte::deleteCarte(){
     for(int i = 0; i < walls.size(); i++){
         walls[i].deleteVertexetBuff();
     }
+    enemy.deleteVertexetBuff();
 }

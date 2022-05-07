@@ -13,36 +13,25 @@ void Player::update(std::map<int,std::vector<int>> GrapMap){
         setCanMove(false);
         if (getDirection() == Directions::UP){
             setTarget(playerIndice - 40);
-            std::cout<< "up" << std::endl;
+            //std::cout<< "up" << std::endl;
         }
         else if (getDirection() == Directions::DOWN){
             setTarget(playerIndice + 40);
-            std::cout<< "down" << std::endl;
+            //std::cout<< "down" << std::endl;
         }
         else if (getDirection() == Directions::LEFT){
             setTarget(playerIndice - 1);
-            std::cout<< "left" << std::endl;
+            //std::cout<< "left" << std::endl;
         }
         else if (getDirection() == Directions::RIGHT){
             setTarget(playerIndice + 1);
-            std::cout<< "right" << std::endl;
+            //std::cout<< "right" << std::endl;
         }
 
         //enemy algosu burda enemy.tageti bulucak enemy algosu bir graph alıcak ve ona göre işlemlerini yapıcak.
 
         int target = getTarget();
         std::vector<int> moveableSpaces = GrapMap[playerIndice];
-
-        for(int i = 0; i < moveableSpaces.size(); i++){
-            std::cout<< moveableSpaces[i]<< " ";
-        }
-
-        std::cout << std::endl;
-
-
-        /*if(std::find(moveableSpaces.begin(), moveableSpaces.end(), target) == moveableSpaces.end())
-            for(int i : moveableSpaces)
-                std::cout << "- Peut bouger en : " << i << std::endl;*/
 
         int cpt = 0;
         for(int i = 0; i < moveableSpaces.size(); i ++){
@@ -66,20 +55,20 @@ void Player::update(std::map<int,std::vector<int>> GrapMap){
 
     // Interpolation du déplacement
 	if(getDirection() == Directions::UP){
-		trans = glm::translate(trans, glm::vec3(0.0f, 0.0002f, 0.0f));
-		setCenter(center.first,center.second + 0.0002f);
+		trans = glm::translate(trans, glm::vec3(0.0f, 0.0004f, 0.0f));
+		setCenter(center.first,center.second + 0.0004f);
 	}
 	else if (getDirection() == Directions::LEFT){
-		trans = glm::translate(trans, glm::vec3(-0.0002f, 0.0f, 0.0f));
-		setCenter(center.first-0.0002f,center.second);
+		trans = glm::translate(trans, glm::vec3(-0.0004f, 0.0f, 0.0f));
+		setCenter(center.first-0.0004f,center.second);
 	}
 	else if (getDirection() == Directions::DOWN){
-		trans = glm::translate(trans, glm::vec3(0.0f, -0.0002f, 0.0f));
-		setCenter(center.first,center.second-0.0002f);
+		trans = glm::translate(trans, glm::vec3(0.0f, -0.0004f, 0.0f));
+		setCenter(center.first,center.second-0.0004f);
 	}
 	else if (getDirection() == Directions::RIGHT){
-		trans = glm::translate(trans, glm::vec3(0.0002f, 0.0f, 0.0f));
-		setCenter(center.first+0.0002f,center.second);
+		trans = glm::translate(trans, glm::vec3(0.0004f, 0.0f, 0.0f));
+		setCenter(center.first+0.0004f,center.second);
 	}
 	else if (getDirection() == Directions::STOP)
 		trans = glm::translate(trans, glm::vec3(0.0f, 0.0f, 0.0f));
@@ -105,9 +94,10 @@ void Player::update(std::map<int,std::vector<int>> GrapMap){
 	/*std::cout<<"center x : "<<center.first<<std::endl;
 	std::cout<<"center y : "<<center.second<<std::endl;*/
 
-	glBindBuffer(GL_ARRAY_BUFFER, VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW); 
+    glBindVertexArray(0);
 
     //delete vertTmp;
 }

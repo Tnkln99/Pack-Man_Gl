@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Enemy.h"
 #include "Wall.h"
 #include <iostream>
 #include <map>
@@ -13,6 +14,7 @@ class Carte{
 private:
     float points;
     Player player = Player(659);
+    Enemy enemy = Enemy(77,1);
     std::vector<Wall> walls;
     std::map <int,std::vector<int>> GrapMap;  
 public:

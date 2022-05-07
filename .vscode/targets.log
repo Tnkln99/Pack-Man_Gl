@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May  6 00:24:32 2022
+# Make data base, printed on Fri May  6 23:07:48 2022
 
 # Variables
 
@@ -53,7 +53,7 @@ _ = /usr/share/code/code
 # makefile (from 'Makefile', line 5)
 CFLAGS = -Wall -g -std=c++11
 # environment
-JOURNAL_STREAM = 8:51243
+JOURNAL_STREAM = 8:49635
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -73,7 +73,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 1520
+MANAGERPID = 1508
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -89,7 +89,7 @@ PATH = /home/tnkln/.local/bin:/home/tnkln/.local/bin:/usr/local/sbin:/usr/local/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/tnkln-Lenovo-ideapad-530S-14IKB:@/tmp/.ICE-unix/1790,unix/tnkln-Lenovo-ideapad-530S-14IKB:/tmp/.ICE-unix/1790
+SESSION_MANAGER = local/tnkln-Lenovo-ideapad-530S-14IKB:@/tmp/.ICE-unix/1780,unix/tnkln-Lenovo-ideapad-530S-14IKB:/tmp/.ICE-unix/1780
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -99,7 +99,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 493609fcb26041119433df13b042a2ae
+INVOCATION_ID = 437d903f8899480c97b39c6db5b19af1
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -109,7 +109,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 6948
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3203
 # automatic
 %F = $(notdir $%)
 # environment
@@ -121,7 +121,7 @@ PWD = /home/tnkln/Documents/Projets/Pack-Man
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1751
+SSH_AGENT_PID = 1745
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -161,7 +161,7 @@ CC = g++
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b876a185-fc2f-40ad-8ce5-bc0fe51cfdbb.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4bf068aa-7abc-4c9b-a965-8291be8a3372.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -231,7 +231,7 @@ LC_ADDRESS = fr_FR.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 6948
+VSCODE_PID = 3203
 # makefile (from 'Makefile', line 6)
 SCR = $(wildcard scr/*.cpp)
 # variable set hash-table stats:
@@ -284,6 +284,7 @@ Makefile:
 #  Last modified 2022-05-04 21:21:35.980701684
 #  File has been updated.
 #  Successfully updated.
+ 
 
 # Not a target:
 scr/Player.o:
@@ -324,7 +325,6 @@ scr/Square.o:
 
 # Not a target:
 scr/Carte.o:
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -356,6 +356,6 @@ mv:
 # strcache performance: lookups = 46 / hit rate = 21%
 # hash-table stats:
 # Load=36/8192=0%, Rehash=0, Collisions=2/46=4%
-# Finished Make data base on Fri May  6 00:24:32 2022
+# Finished Make data base on Fri May  6 23:07:48 2022
 
  
