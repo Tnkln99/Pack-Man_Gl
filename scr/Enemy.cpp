@@ -4,8 +4,10 @@ Enemy::Enemy(int indice, int type) : MoveableSquare(indice){
     switch(type){
         case 1:
             setColor(Color::ORANGE);
+            type = 1;
         case 2:
             setColor(Color::RED);
+            type = 2;
     }
 
 }
@@ -51,7 +53,6 @@ bool Enemy::BFS(std::map<int,std::vector<int>> adj, int src, int dest, int v, in
  
                 // We stop BFS when we find
                 // destination.
-                //std::cout << adj[u][i] << std::endl;
                 if (adj[u][i] == dest)
                     return true;
             }
@@ -83,15 +84,6 @@ int Enemy::nextMove(std::map<int,std::vector<int>> map, int playerPos){ //calcul
         path.push_back(pred[crawl]);
         crawl = pred[crawl];
     }
-
-    /*// distance from source is in distance array
-    std::cout << "Shortest path length is : " << dist[playerPos];
-    std:: cout << std::endl;
-    // printing path from source to destination
-    std::cout << "\nPath is::\n";
-    for (int i = path.size() - 1; i >= 0; i--)
-        std::cout << path[i] << " ";
-    std::cout << std::endl;*/
     
     int res = path[path.size()-2];
     if (res - getCoord() == 1)

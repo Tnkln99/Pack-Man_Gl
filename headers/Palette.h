@@ -9,4 +9,6 @@ public:
     const int getCoord();
 
     void setCoord(int);
+
+    
 };

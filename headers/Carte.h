@@ -15,8 +15,8 @@
 class Carte{
 private:
     float points;
-    Player player = Player(659);
-    Enemy enemy = Enemy(77,1);
+    Player player = Player(899);
+    Enemy enemy = Enemy(659,1);
     std::vector<Wall> walls;
     std::vector<Palette> palettes;
     std::map <int,std::vector<int>> GrapMap;

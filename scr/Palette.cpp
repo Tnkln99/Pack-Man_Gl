@@ -4,3 +4,11 @@ Palette::Palette(int indice) : Square(indiceToCoordinate(indice).first, indiceTo
     coord = indice;
     Square::setColor(Color::WHITE);
 }
+
+const int Palette::getCoord(){
+    return coord;
+}
+
+void Palette::setCoord(int i){
+    coord = i;
+}

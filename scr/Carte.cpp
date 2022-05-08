@@ -81,7 +81,7 @@ void Carte::drawMap(){
 
 void Carte::update(){
     drawMap();
-    std:: cout << "immunity of player " << (bool)player.getImmunity() << std::endl;
+    //std:: cout << "immunity of player " << (bool)player.getImmunity() << std::endl;
     if(player.getHealth() <= 0){
         std::cout << "You lose!" << std::endl;
         exit(0);
@@ -103,7 +103,7 @@ void Carte::update(){
     else{
         //double err = std::fabs(player.getCenter().first - enemy.getCenter().first) + std::fabs(player.getCenter().second - enemy.getCenter().second);
         if(player.getCoord() == enemy.getCoord()){ 
-            std::cout<<"get hit by enemy"<<std::endl;
+            //std::cout<<"get hit by enemy"<<std::endl;
             player.setHealth(player.getHealth()-1);
             hitTime = realTime;
             player.setImmunity(true);
@@ -112,12 +112,15 @@ void Carte::update(){
         enemy.update(GrapMap,player.getCoord());
     }
 
-    /*for(auto & palette : palettes){
-        if(player.getCoord() == palette.getCoord()){
-            palettes.erase(palette.getCoord());
-            points ++;
+    for(auto it = std::begin(palettes); it != std::end(palettes); ++it) {
+        if(it->getCoord() == player.getCoord()){
+            palettes.erase(it);
+            points++;
+            //it->deleteVertexetBuff();
         }
-    }*/
+    }
+
+    std::cout << "your points is " << points << std::endl;
         
     player.update(GrapMap);
 }
@@ -126,6 +129,9 @@ void Carte::deleteCarte(){
     player.deleteVertexetBuff();
     for(int i = 0; i < walls.size(); i++){
         walls[i].deleteVertexetBuff();
+    }
+    for (auto & palette : palettes){
+        palette.deleteVertexetBuff();
     }
     enemy.deleteVertexetBuff();
 }

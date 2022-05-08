@@ -71,20 +71,20 @@ void Player::update(std::map<int,std::vector<int>> GrapMap){
 
     // Interpolation du déplacement
 	if(getDirection() == Directions::UP){
-		trans = glm::translate(trans, glm::vec3(0.0f, 0.0004f, 0.0f));
-		setCenter(center.first,center.second + 0.0004f);
+		trans = glm::translate(trans, glm::vec3(0.0f, 0.0002f, 0.0f));
+		setCenter(center.first,center.second + 0.0002f);
 	}
 	else if (getDirection() == Directions::LEFT){
-		trans = glm::translate(trans, glm::vec3(-0.0004f, 0.0f, 0.0f));
-		setCenter(center.first-0.0004f,center.second);
+		trans = glm::translate(trans, glm::vec3(-0.0002f, 0.0f, 0.0f));
+		setCenter(center.first-0.0002f,center.second);
 	}
 	else if (getDirection() == Directions::DOWN){
-		trans = glm::translate(trans, glm::vec3(0.0f, -0.0004f, 0.0f));
-		setCenter(center.first,center.second-0.0004f);
+		trans = glm::translate(trans, glm::vec3(0.0f, -0.0002f, 0.0f));
+		setCenter(center.first,center.second-0.0002f);
 	}
 	else if (getDirection() == Directions::RIGHT){
-		trans = glm::translate(trans, glm::vec3(0.0004f, 0.0f, 0.0f));
-		setCenter(center.first+0.0004f,center.second);
+		trans = glm::translate(trans, glm::vec3(0.0002f, 0.0f, 0.0f));
+		setCenter(center.first+0.0002f,center.second);
 	}
 	else if (getDirection() == Directions::STOP)
 		trans = glm::translate(trans, glm::vec3(0.0f, 0.0f, 0.0f));
