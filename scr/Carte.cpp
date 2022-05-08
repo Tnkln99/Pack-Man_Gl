@@ -81,6 +81,7 @@ void Carte::drawMap(){
 
 void Carte::update(){
     drawMap();
+    //std:: cout << "immunity of player " << (bool)player.getImmunity() << std::endl;
     if(player.getHealth() <= 0){
         std::cout << "You lose!" << std::endl;
         exit(0);
@@ -89,7 +90,7 @@ void Carte::update(){
 
     time_t realTime;
     realTime = time(NULL);
-    if(realTime - hitTime > 2.0f){
+    if(realTime - hitTime > 1.0f){
         player.setImmunity(false);
     }
     else{

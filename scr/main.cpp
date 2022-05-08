@@ -50,8 +50,6 @@ int main()
 	//Load GLAD so it configures OpenGL
 	gladLoadGL();
 	// Specify the viewport of OpenGL in the Window
-	// In this case the viewport goes from x = 0, y = 0, to x = 800, y = 800
-	//glViewport(0, 0, 1400, 1400);
 
 
 
@@ -99,10 +97,7 @@ int main()
 		int keyA = glfwGetKey(window, GLFW_KEY_A); 
 		int keyS = glfwGetKey(window, GLFW_KEY_S);
 		int keyD = glfwGetKey(window, GLFW_KEY_D);
-
-		/*Keys lastPressed = deneme.getLastPressedKey();
-
-		deneme.update(lastPressed);*/
+		
 		deneme.update();
 
 		if(keyW)
