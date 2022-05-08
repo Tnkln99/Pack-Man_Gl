@@ -7,12 +7,15 @@
 class Player : public MoveableSquare{
 private:
     int health = 4;
+    bool Immunity = false;
 public:
     Player(int indice);
 
     const int getHealth();
+    const bool getImmunity();
 
     void setHealth(int);
+    void setImmunity(bool);
 
     void update(std::map<int,std::vector<int>>);
 };

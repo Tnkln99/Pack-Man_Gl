@@ -84,14 +84,14 @@ int Enemy::nextMove(std::map<int,std::vector<int>> map, int playerPos){ //calcul
         crawl = pred[crawl];
     }
 
-    // distance from source is in distance array
+    /*// distance from source is in distance array
     std::cout << "Shortest path length is : " << dist[playerPos];
     std:: cout << std::endl;
     // printing path from source to destination
     std::cout << "\nPath is::\n";
     for (int i = path.size() - 1; i >= 0; i--)
         std::cout << path[i] << " ";
-    std::cout << std::endl;
+    std::cout << std::endl;*/
     
     int res = path[path.size()-2];
     if (res - getCoord() == 1)
@@ -112,10 +112,10 @@ void Enemy::update(std::map<int,std::vector<int>> map, int playerPos){
     if(CanMove()){
         setCanMove(false);
         setTarget(nextMove(map, playerPos));
-        std::cout << "enemy target is " << getTarget() << std::endl;
     }
 
     int target = getTarget();
+    //std::cout << "enemy target is " << getTarget() << std::endl;
     
 	glm::mat4 trans = glm:: mat4(1.0f);
 

@@ -4,6 +4,22 @@ Player::Player(int indice) : MoveableSquare(indice){
     setDirection(Directions::STOP);
 }
 
+const int Player::getHealth(){
+    return this->health;
+}
+
+const bool Player::getImmunity(){
+    return this->Immunity;
+}
+
+void Player::setImmunity(bool Immunity){
+    this->Immunity = Immunity;
+}
+
+void Player::setHealth(int i){
+    this->health = i;
+}
+
 void Player::update(std::map<int,std::vector<int>> GrapMap){
 
     if(CanMove()) {
@@ -81,9 +97,7 @@ void Player::update(std::map<int,std::vector<int>> GrapMap){
     // Mise à jour de l'indice
     std::pair<float, float> targetCenter = indiceToCoordinate(getTarget());
     double err = std::fabs(getCenter().first - targetCenter.first) + std::fabs(getCenter().second - targetCenter.second);
-    // if(coordinateToIndice(getCenter().first,getCenter().second) != getCoord()){
     if(err < 0.0001){
-        // setCoord(coordinateToIndice(getCenter().first,getCenter().second));
         setCoord(getTarget());
         setCenter(targetCenter.first, targetCenter.second);
         setCanMove(true);

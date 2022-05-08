@@ -9,10 +9,6 @@
 Carte::Carte(){
     this->points = 0;
     this->loadMap();
-    std::vector<int> tmp = GrapMap[498];
-    for (auto i : tmp){
-        std::cout << i << std::endl;
-    }
 }
 
 const std::vector<Wall> Carte::getWalls(){
@@ -53,6 +49,7 @@ void Carte::loadMap(){
         for (int j = 0; j < 40; j++){ // nombre de cologne de map 
             if(tmpGraph[i * 40 + j] == ' '){
                 GrapMap.insert({int (i * 40 + j), {}});
+                palettes.push_back(Palette(i * 40 + j));
                 if(tmpGraph[(i+1) * 40 + j] == ' ')
                     GrapMap[i * 40 + j].push_back((i+1) * 40 + j);
                 if(tmpGraph[(i-1) * 40 + j] == ' ')
@@ -66,8 +63,6 @@ void Carte::loadMap(){
             else if(tmpGraph[i * 40 + j] == 'B'){
                 walls.push_back(Wall(i*40+j));
             }
-            //else
-                //std::cout<<"Z"; // printing it to be sure that it is correct
         }
     }
     drawMap();
@@ -79,11 +74,51 @@ void Carte::drawMap(){
     for(auto & wall : walls){
         wall.drawSquare();
     }
+    for (auto & palette : palettes){
+        palette.drawSquare();
+    }
 }
 
 void Carte::update(){
     drawMap();
-    enemy.update(GrapMap,player.getCoord());
+    std:: cout << "immunity of player " << (bool)player.getImmunity() << std::endl;
+    if(player.getHealth() <= 0){
+        std::cout << "You lose!" << std::endl;
+        exit(0);
+    }
+    std::cout<<"player health: "<<player.getHealth()<<std::endl;
+
+    time_t realTime;
+    realTime = time(NULL);
+    if(realTime - hitTime > 2.0f){
+        player.setImmunity(false);
+    }
+    else{
+        player.setImmunity(true);
+    }
+
+    if(player.getImmunity()){
+        enemy.update(GrapMap,77);
+    }
+    else{
+        //double err = std::fabs(player.getCenter().first - enemy.getCenter().first) + std::fabs(player.getCenter().second - enemy.getCenter().second);
+        if(player.getCoord() == enemy.getCoord()){ 
+            std::cout<<"get hit by enemy"<<std::endl;
+            player.setHealth(player.getHealth()-1);
+            hitTime = realTime;
+            player.setImmunity(true);
+            enemy.update(GrapMap,77);
+        }
+        enemy.update(GrapMap,player.getCoord());
+    }
+
+    /*for(auto & palette : palettes){
+        if(player.getCoord() == palette.getCoord()){
+            palettes.erase(palette.getCoord());
+            points ++;
+        }
+    }*/
+        
     player.update(GrapMap);
 }
 
