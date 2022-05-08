@@ -81,12 +81,11 @@ void Carte::drawMap(){
 
 void Carte::update(){
     drawMap();
-    //std:: cout << "immunity of player " << (bool)player.getImmunity() << std::endl;
     if(player.getHealth() <= 0){
         std::cout << "You lose!" << std::endl;
         exit(0);
     }
-    std::cout<<"player health: "<<player.getHealth()<<std::endl;
+    //std::cout<<"player health: "<<player.getHealth()<<std::endl;
 
     time_t realTime;
     realTime = time(NULL);
@@ -120,7 +119,7 @@ void Carte::update(){
         }
     }
 
-    std::cout << "your points is " << points << std::endl;
+    //std::cout << "your points is " << points << std::endl;
         
     player.update(GrapMap);
 }

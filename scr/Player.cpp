@@ -97,7 +97,7 @@ void Player::update(std::map<int,std::vector<int>> GrapMap){
     // Mise à jour de l'indice
     std::pair<float, float> targetCenter = indiceToCoordinate(getTarget());
     double err = std::fabs(getCenter().first - targetCenter.first) + std::fabs(getCenter().second - targetCenter.second);
-    if(err < 0.0001){
+    if(err < 0.0001){ 
         setCoord(getTarget());
         setCenter(targetCenter.first, targetCenter.second);
         setCanMove(true);

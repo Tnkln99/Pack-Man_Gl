@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May  6 23:07:48 2022
+# Make data base, printed on Sun May  8 17:13:29 2022
 
 # Variables
 
@@ -109,7 +109,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 3203
+GIO_LAUNCHED_DESKTOP_FILE_PID = 118906
 # automatic
 %F = $(notdir $%)
 # environment
@@ -133,7 +133,7 @@ HOME = /home/tnkln
 # environment
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
-VSCODE_CODE_CACHE_PATH = /home/tnkln/.config/Code/CachedData/dfd34e8260c270da74b5c2d86d61aee4b6d56977
+VSCODE_CODE_CACHE_PATH = /home/tnkln/.config/Code/CachedData/57fd6d0195bb9b9d1b49f6da5db789060795de47
 # environment
 LOGNAME = tnkln
 # environment
@@ -161,7 +161,7 @@ CC = g++
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4bf068aa-7abc-4c9b-a965-8291be8a3372.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-82e433ea-7288-454d-928c-ff9f63ab828e.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -183,7 +183,7 @@ MAKE_COMMAND := make
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-45d95aaa-1.66.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-45d95aaa-1.67.0-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -231,7 +231,7 @@ LC_ADDRESS = fr_FR.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3203
+VSCODE_PID = 118906
 # makefile (from 'Makefile', line 6)
 SCR = $(wildcard scr/*.cpp)
 # variable set hash-table stats:
@@ -243,10 +243,10 @@ SCR = $(wildcard scr/*.cpp)
 
 # Directories
 
-# . (device 66307, inode 8128642): 12 files, no impossibilities.
-# scr (device 66307, inode 8131518): 10 files, no impossibilities.
+# . (device 66307, inode 8128642): 13 files, no impossibilities.
+# scr (device 66307, inode 8131518): 11 files, no impossibilities.
 
-# 22 files, no impossibilities in 2 directories.
+# 24 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -284,15 +284,15 @@ Makefile:
 #  Last modified 2022-05-04 21:21:35.980701684
 #  File has been updated.
 #  Successfully updated.
- 
 
 # Not a target:
 scr/Player.o:
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-bin/packman: scr/Enemy.o scr/Wall.o scr/Carte.o scr/Player.o scr/Square.o scr/MoveableSquare.o scr/main.o obj/glad.o
+bin/packman: scr/Enemy.o scr/Palette.o scr/Wall.o scr/Carte.o scr/Player.o scr/Square.o scr/MoveableSquare.o scr/main.o obj/glad.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -342,20 +342,26 @@ mv:
 #  recipe to execute (from 'Makefile', line 16):
 	mv scr/*.o ./obj
 
+# Not a target:
+scr/Palette.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # files hash-table stats:
-# Load=14/1024=1%, Rehash=0, Collisions=0/32=0%
+# Load=15/1024=1%, Rehash=0, Collisions=0/34=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 36 / storage = 348 B / avg = 9 B
-# current buf: size = 8162 B / used = 348 B / count = 36 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 39 / storage = 380 B / avg = 9 B
+# current buf: size = 8162 B / used = 380 B / count = 39 / avg = 9 B
 
-# strcache performance: lookups = 46 / hit rate = 21%
+# strcache performance: lookups = 49 / hit rate = 20%
 # hash-table stats:
-# Load=36/8192=0%, Rehash=0, Collisions=2/46=4%
-# Finished Make data base on Fri May  6 23:07:48 2022
+# Load=39/8192=0%, Rehash=0, Collisions=2/49=4%
+# Finished Make data base on Sun May  8 17:13:29 2022
 
  

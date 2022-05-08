@@ -21,6 +21,7 @@ protected:
 public: 
     unsigned int VAO, VBO, EBO;
 
+
     Square(float, float, float);
 
     const std::pair<float,float> indiceToCoordinate(int);
