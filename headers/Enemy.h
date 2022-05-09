@@ -9,7 +9,7 @@ class Enemy : public MoveableSquare{
 private:
     int type;
 public:
-    Enemy(int indice, int type);
+    Enemy(int indice, int type, GLint shaderProgram);
     
     bool BFS(std::map<int,std::vector<int>>,int,int,int,int*,int*);
     int nextMove(std::map<int,std::vector<int>> map, int playerPos);

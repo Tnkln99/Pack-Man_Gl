@@ -4,5 +4,5 @@
 class Wall : public Square{
 private:
 public:
-    Wall(int indice);
+    Wall(int indice, GLint shaderProgram);
 };

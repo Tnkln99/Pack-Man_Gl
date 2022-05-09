@@ -9,7 +9,7 @@ private:
     int health = 4;
     bool Immunity = false;
 public:
-    Player(int indice);
+    Player(int indice, GLint shaderProgram);
 
     const int getHealth();
     const bool getImmunity();

@@ -20,8 +20,9 @@ protected:
     std::pair<float,float> center; //position as x and y
 public: 
     unsigned int VAO, VBO, EBO;
+    GLint shaderProgram;
 
-    Square(float, float, float);
+    Square(float, float, float, GLint shaderProgram);
 
     const std::pair<float,float> indiceToCoordinate(int);
     const int coordinateToIndice(float,float);
@@ -29,10 +30,13 @@ public:
     const glm::vec3* getVertices();
     const Color getColor();
     const std::pair<float,float> getCenter();
+    const GLint getShaderProgram();
 
     void setColor(Color);
     void setVertices(int,double,double,double);
     virtual void setCenter(float,float);
+
+    void colorToRGB(Color,float*);
 
     void loadSquare();
     void drawSquare();

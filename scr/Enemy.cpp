@@ -1,14 +1,16 @@
 #include "../headers/Enemy.h"
 
-Enemy::Enemy(int indice, int type) : MoveableSquare(indice){
+Enemy::Enemy(int indice, int type, GLint shaderProgram) : MoveableSquare(indice, shaderProgram){
     switch(type){
         case 1:
             setColor(Color::ORANGE);
             type = 1;
+            break;
         case 2:
             setColor(Color::RED);
             type = 2;
-    }
+            break;
+    };
 
 }
 

@@ -15,10 +15,11 @@ const char* vertexShaderSource = "#version 330 core\n"
 "}\0";
 //Fragment Shader source code
 const char* fragmentShaderSource = "#version 330 core\n"
-"out vec4 FragColor;\n"
+"uniform vec3 my_color;\n"
 "void main()\n"
 "{\n"
-"   FragColor = vec4(0.8f, 0.3f, 0.02f, 1.0f);\n"
+"   gl_FragColor.rgb = my_color;\n"
+"   gl_FragColor.a = 1.0;\n"
 "}\n\0";
 
 
@@ -49,7 +50,6 @@ int main()
 
 	//Load GLAD so it configures OpenGL
 	gladLoadGL();
-	// Specify the viewport of OpenGL in the Window
 
 
 
@@ -80,7 +80,7 @@ int main()
 	glDeleteShader(fragmentShader);
 
 	//Player square = Player(0.0f, 0.0f);
-	Carte deneme = Carte();
+	Carte deneme = Carte(shaderProgram);
 	
 	
 	// Main while loop
@@ -97,7 +97,7 @@ int main()
 		int keyA = glfwGetKey(window, GLFW_KEY_A); 
 		int keyS = glfwGetKey(window, GLFW_KEY_S);
 		int keyD = glfwGetKey(window, GLFW_KEY_D);
-		
+
 		deneme.update();
 
 		if(keyW)

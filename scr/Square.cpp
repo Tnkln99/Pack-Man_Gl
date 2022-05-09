@@ -1,7 +1,8 @@
 #include "../headers/Square.h"
 
-Square::Square(float centerx, float centery, float size) 
+Square::Square(float centerx, float centery, float size, GLint shaderProgram) 
 {
+    this->shaderProgram = shaderProgram;
     center.first = centerx;
     center.second = centery;
     vertices[0] = glm::vec3(centerx + size,  centery + size, 0.0f); // top right // 0
@@ -50,7 +51,6 @@ void Square::setColor(Color C){
 	color = C;
 }
 
-
 void Square::setVertices(int i,double x,double y, double z){
 	vertices[i].x = x;
 	vertices[i].y = y;
@@ -60,6 +60,41 @@ void Square::setVertices(int i,double x,double y, double z){
 void Square::setCenter(float x, float y){
     center.first = x;
     center.second = y;
+}
+
+void Square::colorToRGB(Color C, float* rgb){
+    switch(C){
+        case Color::RED:
+            rgb[0] = 1.0f;
+            rgb[1] = 0.0f;
+            rgb[2] = 0.0f;
+            break;
+        case Color::PURPLE:
+            rgb[0] = 0.5f;
+            rgb[1] = 0.0f;
+            rgb[2] = 0.5f;
+            break;
+        case Color::BLUE:
+            rgb[0] = 0.0f;
+            rgb[1] = 0.0f;
+            rgb[2] = 1.0f;
+            break;
+        case Color::YELLOW:
+            rgb[0] = 1.0f;
+            rgb[1] = 1.0f;
+            rgb[2] = 0.0f;
+            break;
+        case Color::WHITE:
+            rgb[0] = 1.0f;
+            rgb[1] = 1.0f;
+            rgb[2] = 1.0f;
+            break;
+        case Color::ORANGE:
+            rgb[0] = 1.0f;
+            rgb[1] = 0.5f;
+            rgb[2] = 0.0f;
+            break;
+    };
 }
 
 void Square::loadSquare()
@@ -83,22 +118,27 @@ void Square::loadSquare()
     // EBO is stored in the VAO
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
- 
+
     // registered VBO as the vertex attributes
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
  
     // unbind the VAO
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
+    glBindVertexArray(0);   
 }
 
 void Square::drawSquare()
 {
+    GLint colorLocation = glGetUniformLocation(shaderProgram, "my_color");
+    float rgb[3];
+    colorToRGB(color,rgb);
+    glUniform3fv(colorLocation, 1, rgb);  
+
 	// Bind the VAO so OpenGL knows to use it
 	glBindVertexArray(VAO);
 	// Draw the triangle using the GL_TRIANGLES primitive
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);  
 }
 
 void Square::deleteVertexetBuff(){

@@ -6,9 +6,11 @@
 #endif
 
 
-Carte::Carte(){
+Carte::Carte(GLint shaderProgram){
+    player = Player(899,shaderProgram);
+    enemy = Enemy(659,2,shaderProgram);
     this->points = 0;
-    this->loadMap();
+    this->loadMap(shaderProgram);
 }
 
 const std::vector<Wall> Carte::getWalls(){
@@ -28,7 +30,7 @@ void Carte::setPlayerDirection(Directions direction){
         player.setDirection(direction);
 }
 
-void Carte::loadMap(){
+void Carte::loadMap(GLint shaderProgram){
     std::string var;
     std::ifstream map;
     map.open("map.txt");
@@ -49,7 +51,7 @@ void Carte::loadMap(){
         for (int j = 0; j < 40; j++){ // nombre de cologne de map 
             if(tmpGraph[i * 40 + j] == ' '){
                 GrapMap.insert({int (i * 40 + j), {}});
-                palettes.push_back(Palette(i * 40 + j));
+                palettes.push_back(Palette(i * 40 + j,shaderProgram));
                 if(tmpGraph[(i+1) * 40 + j] == ' ')
                     GrapMap[i * 40 + j].push_back((i+1) * 40 + j);
                 if(tmpGraph[(i-1) * 40 + j] == ' ')
@@ -61,7 +63,7 @@ void Carte::loadMap(){
             }
             // initialisation des murs
             else if(tmpGraph[i * 40 + j] == 'B'){
-                walls.push_back(Wall(i*40+j));
+                walls.push_back(Wall(i*40+j, shaderProgram));
             }
         }
     }

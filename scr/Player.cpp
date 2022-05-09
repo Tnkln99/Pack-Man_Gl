@@ -1,6 +1,7 @@
 #include "../headers/Player.h"
 
-Player::Player(int indice) : MoveableSquare(indice){
+Player::Player(int indice, GLint shaderProgram) : MoveableSquare(indice, shaderProgram){
+    setColor(Color::YELLOW);
     setDirection(Directions::STOP);
 }
 

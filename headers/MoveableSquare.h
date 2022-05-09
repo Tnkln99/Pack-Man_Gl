@@ -11,7 +11,7 @@ private:
     bool canMove = true;
     Directions direction;
 public:
-    MoveableSquare(int indice);
+    MoveableSquare(int indice, GLint shaderProgram);
 
     const int getTarget();
     const int getCoord();

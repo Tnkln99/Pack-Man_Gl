@@ -15,15 +15,15 @@
 class Carte{
 private:
     float points;
-    Player player = Player(899);
-    Enemy enemy = Enemy(659,1);
+    Player player = Player(899,0);
+    Enemy enemy = Enemy(659,2,0);
     std::vector<Wall> walls;
     std::vector<Palette> palettes;
     std::map <int,std::vector<int>> GrapMap;
 
     time_t hitTime = 0;
 public:
-    Carte();
+    Carte(GLint shaderProgram);
 
     const float getPoints();
     const Player getPlayer();
@@ -32,9 +32,11 @@ public:
     const Directions getLastPressedKey();
     const int getPlayerIndice();
 
+
     void setPlayerDirection(Directions direction);
 
-    void loadMap();
+
+    void loadMap(GLint shaderProgram);
     void drawMap();
 
     void update();
