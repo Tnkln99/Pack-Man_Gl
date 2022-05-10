@@ -1,0 +1,24 @@
+# ninja log v5
+2	3268	1652167825854247111	CMakeFiles/ola.dir/scr/Enemy.cpp.o	23ab3bbe4741989d
+2	1339	1652167823926246587	CMakeFiles/ola.dir/scr/Palette.cpp.o	2f89c23fd037fab2
+3	1521	1652167824106246634	CMakeFiles/ola.dir/scr/Wall.cpp.o	10b4a0cee49cf22b
+3	650	1652167823206246403	CMakeFiles/ola.dir/scr/glad.c.o	fc121fa33d1b3e96
+3501	3647	1652167826230247218	PackMan	b1601ac45dcb9085
+2	1446	1652167824026246613	CMakeFiles/ola.dir/scr/MoveableSquare.cpp.o	e946279c6006f469
+164	171	1652166620698717573	libblah.a	5102d4b6d4fcea5d
+2	1837	1652167824422246719	CMakeFiles/ola.dir/scr/Player.cpp.o	690e6cad14a9a9e6
+1	3470	1652167826054247167	CMakeFiles/ola.dir/scr/Carte.cpp.o	5fd98383d490182a
+2	1744	1652167824330246694	CMakeFiles/ola.dir/scr/Square.cpp.o	341f0532d0b5c3f5
+4	3285	1652167825870247115	CMakeFiles/PackMan.dir/scr/main.cpp.o	6fefbea12688a74f
+3470	3500	1652167826086247176	libola.a	bc293a8b5c1b8a5a
+4	355	1652169279900485044	CMakeFiles/ola.dir/scr/glad.c.o	f49b5b9f0db73955
+4	863	1652169280408488056	CMakeFiles/ola.dir/scr/Square.cpp.o	ba81a125ca423981
+3	902	1652169280444488269	CMakeFiles/ola.dir/scr/MoveableSquare.cpp.o	fdc6b074bcade85
+4	914	1652169280456488340	CMakeFiles/ola.dir/scr/Wall.cpp.o	8d9bee2b9c368690
+3	940	1652169280484488506	CMakeFiles/ola.dir/scr/Palette.cpp.o	bd7f423adb7bc34d
+3	1192	1652169280736489999	CMakeFiles/ola.dir/scr/Player.cpp.o	7d489e1e9665b2bb
+5	1903	1652169281448494220	CMakeFiles/PackMan.dir/scr/main.cpp.o	491f2e3f7bbe4d35
+3	2132	1652169281676495571	CMakeFiles/ola.dir/scr/Enemy.cpp.o	c6b922a1907d36f2
+2	2285	1652169281828496472	CMakeFiles/ola.dir/scr/Carte.cpp.o	60c8fe5d0c7621d5
+2285	2327	1652169281868496709	libola.a	bc293a8b5c1b8a5a
+2327	2437	1652169281980497373	PackMan	b1601ac45dcb9085
