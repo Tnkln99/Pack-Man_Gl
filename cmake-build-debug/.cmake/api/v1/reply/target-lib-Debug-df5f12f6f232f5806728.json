@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "libola.a"
+			"path" : "liblib.a"
 		}
 	],
 	"backtrace" : 1,
@@ -25,7 +25,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 7,
+				"line" : 8,
 				"parent" : 0
 			}
 		]
@@ -65,9 +65,9 @@
 			]
 		}
 	],
-	"id" : "ola::@6890427a1f51a3e7e1df",
-	"name" : "ola",
-	"nameOnDisk" : "libola.a",
+	"id" : "lib::@6890427a1f51a3e7e1df",
+	"name" : "lib",
+	"nameOnDisk" : "liblib.a",
 	"paths" : 
 	{
 		"build" : ".",

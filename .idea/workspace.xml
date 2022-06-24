@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="PackMan" targetName="PackMan" />
-      <config projectName="PackMan" targetName="ola" />
+      <config projectName="PackMan" targetName="lib" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -12,25 +18,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40c942a7-c0ab-4b2e-9990-fa4846af2070" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Pack-Man.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/targets.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/targets.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/all" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/packman" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Carte.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Enemy.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/MoveableSquare.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Palette.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Player.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Square.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Wall.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/glad.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/main.o" beforeDir="false" />
-    </list>
+    <list default="true" id="40c942a7-c0ab-4b2e-9990-fa4846af2070" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +30,9 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -63,31 +54,27 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "cmake.loaded.for.project": "true",
-    "last_opened_file_path": "/home/tnkln/Documents/Projets/Pack-Man",
+    "last_opened_file_path": "C:/Users/tanku/Documents/Pong",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "CPPToolchains"
   }
 }]]></component>
   <component name="RunManager" selected="CMake Application.PackMan">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PackMan" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="PackMan" TARGET_NAME="PackMan" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="PackMan" RUN_TARGET_NAME="PackMan">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ola" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="PackMan" TARGET_NAME="ola" CONFIG_NAME="Debug">
+    <configuration name="lib" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="PackMan" TARGET_NAME="lib" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.ola" />
+      <item itemvalue="CMake Application.lib" />
       <item itemvalue="CMake Application.PackMan" />
     </list>
   </component>
@@ -100,6 +87,9 @@
       <option name="presentableId" value="Default" />
       <updated>1652169250264</updated>
       <workItem from="1652169251586" duration="317000" />
+      <workItem from="1656026411178" duration="1173000" />
+      <workItem from="1656069625195" duration="63000" />
+      <workItem from="1656091216839" duration="15000" />
     </task>
     <servers />
   </component>

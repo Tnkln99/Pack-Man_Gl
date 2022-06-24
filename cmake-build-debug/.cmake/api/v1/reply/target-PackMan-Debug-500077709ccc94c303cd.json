@@ -2,7 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "PackMan"
+			"path" : "PackMan.exe"
+		},
+		{
+			"path" : "PackMan.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -25,13 +28,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 20,
+				"line" : 21,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 21,
+				"line" : 22,
 				"parent" : 0
 			}
 		]
@@ -56,7 +59,7 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "ola::@6890427a1f51a3e7e1df"
+			"id" : "lib::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "PackMan::@6890427a1f51a3e7e1df",
@@ -74,22 +77,22 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "libola.a",
+				"fragment" : "liblib.a",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lglfw",
+				"fragment" : "-lglfw3",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ldl",
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
 				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "PackMan",
-	"nameOnDisk" : "PackMan",
+	"nameOnDisk" : "PackMan.exe",
 	"paths" : 
 	{
 		"build" : ".",

@@ -1,4 +1,4 @@
-/home/tnkln/Documents/Projets/Pack-Man/cmake-build-debug/CMakeFiles/ola.dir
-/home/tnkln/Documents/Projets/Pack-Man/cmake-build-debug/CMakeFiles/PackMan.dir
-/home/tnkln/Documents/Projets/Pack-Man/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/tnkln/Documents/Projets/Pack-Man/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/tanku/Documents/Pack-Man_Gl/cmake-build-debug/CMakeFiles/lib.dir
+C:/Users/tanku/Documents/Pack-Man_Gl/cmake-build-debug/CMakeFiles/PackMan.dir
+C:/Users/tanku/Documents/Pack-Man_Gl/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/tanku/Documents/Pack-Man_Gl/cmake-build-debug/CMakeFiles/rebuild_cache.dir
